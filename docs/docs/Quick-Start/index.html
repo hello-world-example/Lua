@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="快速开始 安装 如果是在 Linux 或 Mac 下，Lua 大部分情况下已经安装
+# 查看版本 $ lua -v Lua 5.2.4 Copyright (C) 1994-2015 Lua.org, PUC-Rio # 卸载原来安装的版本 $ which lua /usr/local/bin/lua # 发现是通过 brew 安装的 $ ll /usr/local/bin/lua /usr/local/bin/lua -&gt; ../Cellar/lua/5.2.4_4/bin/lua # 卸载 $ brew uninstall lua 编译安装 # 下载解压 $ curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz $ tar zxvf lua-5.3.5.tar.gz $ cd lua-5.3.5 # 查看文档 $ open doc/contents.html # 编译 $ make Please do &#39;make PLATFORM&#39; where PLATFORM is one of these: aix bsd c89 freebsd generic linux macosx mingw posix solaris See doc/readme."><meta property="og:title" content="" />
+<meta property="og:description" content="快速开始 安装 如果是在 Linux 或 Mac 下，Lua 大部分情况下已经安装
+# 查看版本 $ lua -v Lua 5.2.4 Copyright (C) 1994-2015 Lua.org, PUC-Rio # 卸载原来安装的版本 $ which lua /usr/local/bin/lua # 发现是通过 brew 安装的 $ ll /usr/local/bin/lua /usr/local/bin/lua -&gt; ../Cellar/lua/5.2.4_4/bin/lua # 卸载 $ brew uninstall lua 编译安装 # 下载解压 $ curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz $ tar zxvf lua-5.3.5.tar.gz $ cd lua-5.3.5 # 查看文档 $ open doc/contents.html # 编译 $ make Please do &#39;make PLATFORM&#39; where PLATFORM is one of these: aix bsd c89 freebsd generic linux macosx mingw posix solaris See doc/readme." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/" />
+
+<title>Quick Start | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/"class=active>快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Quick Start</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#快速开始">快速开始</a>
+      <ul>
+        <li><a href="#安装">安装</a>
+          <ul>
+            <li><a href="#编译安装">编译安装</a></li>
+          </ul>
+        </li>
+        <li><a href="#hello-world">Hello World</a>
+          <ul>
+            <li><a href="#lua">lua</a></li>
+            <li><a href="#helloworldlua">helloworld.lua</a></li>
+            <li><a href="#helloworldluash">helloworld.lua.sh</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="快速开始">快速开始</h1>
+<h2 id="安装">安装</h2>
+<p>如果是在 Linux 或 Mac 下，Lua 大部分情况下已经安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看版本</span>
+$ lua -v
+Lua 5.2.4  Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1994-2015 Lua.org, PUC-Rio
+
+<span style="color:#75715e"># 卸载原来安装的版本</span>
+$ which lua
+/usr/local/bin/lua
+<span style="color:#75715e"># 发现是通过 brew 安装的</span>
+$ ll /usr/local/bin/lua
+/usr/local/bin/lua -&gt; ../Cellar/lua/5.2.4_4/bin/lua
+<span style="color:#75715e"># 卸载</span>
+$ brew uninstall lua
+</code></pre></div><h3 id="编译安装">编译安装</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 下载解压</span>
+$ curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz
+$ tar zxvf lua-5.3.5.tar.gz
+
+$ cd lua-5.3.5
+<span style="color:#75715e"># 查看文档</span>
+$ open doc/contents.html
+
+<span style="color:#75715e"># 编译</span>
+$ make
+Please <span style="color:#66d9ef">do</span> <span style="color:#e6db74">&#39;make PLATFORM&#39;</span> where PLATFORM is one of these:
+   aix bsd c89 freebsd generic linux macosx mingw posix solaris
+See doc/readme.html <span style="color:#66d9ef">for</span> complete instructions.
+$ make macosx
+
+<span style="color:#75715e"># 安装</span>
+$ sudo make install
+<span style="color:#75715e"># 记录安装位置</span>
+cd src <span style="color:#f92672">&amp;&amp;</span> mkdir -p /usr/local/bin /usr/local/include /usr/local/lib /usr/local/man/man1 /usr/local/share/lua/5.3 /usr/local/lib/lua/5.3
+cd src <span style="color:#f92672">&amp;&amp;</span> install -p -m <span style="color:#ae81ff">0755</span> lua luac /usr/local/bin
+cd src <span style="color:#f92672">&amp;&amp;</span> install -p -m <span style="color:#ae81ff">0644</span> lua.h luaconf.h lualib.h lauxlib.h lua.hpp /usr/local/include
+cd src <span style="color:#f92672">&amp;&amp;</span> install -p -m <span style="color:#ae81ff">0644</span> liblua.a /usr/local/lib
+cd doc <span style="color:#f92672">&amp;&amp;</span> install -p -m <span style="color:#ae81ff">0644</span> lua.1 luac.1 /usr/local/man/man1
+
+$ lua -v
+Lua 5.3.5  Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1994-2018 Lua.org, PUC-Rio
+</code></pre></div><blockquote>
+<p>@see 
+  <a href="http://www.lua.org/manual/5.4/readme.html">Installing Lua</a></p>
+</blockquote>
+<h2 id="hello-world">Hello World</h2>
+<h3 id="lua">lua</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lua
+Lua 5.3.5  Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1994-2018 Lua.org, PUC-Rio
+
+&gt; print<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello World!&#34;</span><span style="color:#f92672">)</span>
+Hello World!
+
+&gt; <span style="color:#75715e"># Ctrl + C 退出</span>
+</code></pre></div><h3 id="helloworldlua">helloworld.lua</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">world <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;World&#34;</span>
+print(<span style="color:#e6db74">&#34;Hello &#34;</span> <span style="color:#f92672">..</span> world)
+</code></pre></div><p>运行 <code>helloworld.lua</code> 脚本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lua helloworld.lua
+</code></pre></div><h3 id="helloworldluash">helloworld.lua.sh</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">#!/usr/local/bin/lua</span>
+
+<span style="color:#75715e">-- 获取文件参数</span>
+print(<span style="color:#e6db74">&#34;Hello &#34;</span><span style="color:#f92672">..</span>arg[<span style="color:#ae81ff">1</span>])
+</code></pre></div><p>运行 <code>helloworld.lua</code> 脚本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./helloworld.lua.sh World
+Hello World
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>IDEA 插件 
+  <a href="https://plugins.jetbrains.com/plugin/9768-emmylua">EmmyLua</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Quick-Start.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#快速开始">快速开始</a>
+      <ul>
+        <li><a href="#安装">安装</a>
+          <ul>
+            <li><a href="#编译安装">编译安装</a></li>
+          </ul>
+        </li>
+        <li><a href="#hello-world">Hello World</a>
+          <ul>
+            <li><a href="#lua">lua</a></li>
+            <li><a href="#helloworldlua">helloworld.lua</a></li>
+            <li><a href="#helloworldluash">helloworld.lua.sh</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

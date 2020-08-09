@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="string function    function 概述     .. 字符串拼接   string.upper(argument) 转大写   string.lower(argument) 转小写   string.format(...) 格式化，string.format(&quot;the %s is : %d&quot;, &quot;value&quot;, 4)   string.rep(string, n) 字符串 repeat，string.rep(&quot;abc&quot;, 2) --&gt; abcabc   string.gsub(str,pattern,target[,num]) 替换，str, count = string.gsub(&quot;燕燕燕&quot;, &quot;燕&quot;, &quot;子&quot;)   string.find(str, pattern, [init, [end]]) 字符串查找，startI, endI = string.find(&quot;大闹天宫&quot;, &quot;闹天&quot;)，未找到返回 nil   string.len(arg) 【不支持中文】英文字符串长度，建议通过 utf8.len(arg) 代替   string.reverse(arg) 【不支持中文】反转   string."><meta property="og:title" content="" />
+<meta property="og:description" content="string function    function 概述     .. 字符串拼接   string.upper(argument) 转大写   string.lower(argument) 转小写   string.format(...) 格式化，string.format(&quot;the %s is : %d&quot;, &quot;value&quot;, 4)   string.rep(string, n) 字符串 repeat，string.rep(&quot;abc&quot;, 2) --&gt; abcabc   string.gsub(str,pattern,target[,num]) 替换，str, count = string.gsub(&quot;燕燕燕&quot;, &quot;燕&quot;, &quot;子&quot;)   string.find(str, pattern, [init, [end]]) 字符串查找，startI, endI = string.find(&quot;大闹天宫&quot;, &quot;闹天&quot;)，未找到返回 nil   string.len(arg) 【不支持中文】英文字符串长度，建议通过 utf8.len(arg) 代替   string.reverse(arg) 【不支持中文】反转   string." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/String-Function/" />
+
+<title>String Function | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/"class=active>string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>String Function</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#string">string</a>
+      <ul>
+        <li><a href="#function">function</a></li>
+        <li><a href="#stringformat">string.format</a></li>
+        <li><a href="#pattern-匹配模式">Pattern 匹配模式</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="string">string</h1>
+<h2 id="function">function</h2>
+<table>
+<thead>
+<tr>
+<th align="left">function</th>
+<th align="left">概述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>..</code></td>
+<td align="left">字符串拼接</td>
+</tr>
+<tr>
+<td align="left"><code>string.upper(argument)</code></td>
+<td align="left">转大写</td>
+</tr>
+<tr>
+<td align="left"><code>string.lower(argument)</code></td>
+<td align="left">转小写</td>
+</tr>
+<tr>
+<td align="left"><code>string.format(...)</code></td>
+<td align="left">格式化，<code>string.format(&quot;the %s is : %d&quot;, &quot;value&quot;, 4)</code></td>
+</tr>
+<tr>
+<td align="left"><code>string.rep(string, n)</code></td>
+<td align="left">字符串 repeat，<code>string.rep(&quot;abc&quot;, 2)  --&gt; abcabc</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>string.gsub(str,pattern,target[,num])</code></strong></td>
+<td align="left">替换，<code>str, count = string.gsub(&quot;燕燕燕&quot;, &quot;燕&quot;, &quot;子&quot;)</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>string.find(str, pattern, [init, [end]])</code></strong></td>
+<td align="left">字符串查找，<code>startI, endI = string.find(&quot;大闹天宫&quot;, &quot;闹天&quot;)</code>，未找到返回 <code>nil</code></td>
+</tr>
+<tr>
+<td align="left"><code>string.len(arg)</code></td>
+<td align="left">【不支持中文】英文字符串长度，<strong>建议通过 <code>utf8.len(arg)</code> 代替</strong></td>
+</tr>
+<tr>
+<td align="left"><code>string.reverse(arg)</code></td>
+<td align="left">【不支持中文】反转</td>
+</tr>
+<tr>
+<td align="left"><code>string.char(...int)</code></td>
+<td align="left">【不支持中文】ASCII 转 字符，<code>string.char(97, 98, 99) --&gt; abc</code></td>
+</tr>
+<tr>
+<td align="left"><code>string.byte(arg[,int])</code></td>
+<td align="left">【不支持中文】字符 转 ASCII，<code>string.byte(&quot;abc&quot;, 2) --&gt; 98</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>string.sub(str, start [,end])</code></strong></td>
+<td align="left">【不支持中文】字符串切割，配合 <code>string.find</code> 获取中文字符的位置</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong><code>string.match(str, pattern[, start])</code></strong></td>
+<td align="left">搜索匹配的第一个字符，未找到返回 <code>nil</code><br /><code>string.match(&quot;I have 2 questions&quot;, &quot;%d+ %a+&quot;) --&gt; 2 questions </code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>string.gmatch(str, pattern)</code></strong></td>
+<td align="left">返回一个迭代器函数，每一次调用这个函数，返回一个在字符串 str 找到的下一个符合 pattern 描述的子串<br /><code>for word in string.gmatch(&quot;Hello Lua user&quot;, &quot;%a+&quot;) do print(word) end</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="stringformat">string.format</h2>
+<table>
+<thead>
+<tr>
+<th align="center">format</th>
+<th>简介</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>%q</code></td>
+<td>将 字符串 转化为可安全被 Lua 编译器读入的格式</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%s</code></td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%d</code>, <code>%i</code></td>
+<td>数字</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%c</code></td>
+<td>数字 转 ASCII 字符</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%o</code></td>
+<td>8 进制</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%x</code>，<code>%x</code></td>
+<td>16 进制</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%u</code></td>
+<td>去符号</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%num</code></td>
+<td>指定宽度</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%+</code></td>
+<td>正数显示正号，负数显示负号</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%-</code></td>
+<td>指定宽度时靠左对齐</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%0num</code></td>
+<td>数字以 0 补全</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">print(string.format(<span style="color:#e6db74">&#34;%+5i,%+5i&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))   <span style="color:#75715e">--    +1,   -1</span>
+print(string.format(<span style="color:#e6db74">&#34;%05i,%05i&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))   <span style="color:#75715e">-- 00001,-0001</span>
+print(string.format(<span style="color:#e6db74">&#34;%+05i,%+05i&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)) <span style="color:#75715e">-- +0001,-0001</span>
+print(string.format(<span style="color:#e6db74">&#34;%5s:%5s&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))      <span style="color:#75715e">--     1:    2</span>
+print(string.format(<span style="color:#e6db74">&#34;%-5s:%5s&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))     <span style="color:#75715e">-- 1    :    2</span>
+</code></pre></div><h2 id="pattern-匹配模式">Pattern 匹配模式</h2>
+<p>详见： 
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></p>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://www.lua.org/manual/5.4/manual.html#6.4">6.4 – String Manipulation</a></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#6.4">字符串处理</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/String-Function.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#string">string</a>
+      <ul>
+        <li><a href="#function">function</a></li>
+        <li><a href="#stringformat">string.format</a></li>
+        <li><a href="#pattern-匹配模式">Pattern 匹配模式</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

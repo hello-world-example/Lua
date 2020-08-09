@@ -1,41 +1,16 @@
 ---
-title: Introduction
+title: Lua
 type: docs
 ---
 
-# Acerbo datus maxime
-
-{{< columns >}}
-## Astris ipse furtiva
-
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
-
-<--->
-
-## Suis quot vota
-
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
 
 
-## Tempora nisi nunc
-
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
-
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-
-## Locis suis novi cum suoque decidit eadem
-
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab?
+- 官方资料
+  - https://www.lua.org/
+  - [Lua Reference manuals](https://www.lua.org/manual/)
+- 中文资料
+  - [Lua 5.3 参考手册](https://www.runoob.com/manual/lua53doc/contents.html)
+- 应用案例
+  - [Redis Lua scripting](https://redis.io/commands/eval): Redis 对 Lua 脚本的支持
+  - [OpenResty®](http://openresty.org/cn/) 是一款基于 NGINX 和 Lua 的 Web 平台
+  - [lua-nginx-module](https://www.nginx.com/resources/wiki/modules/lua/) 是 OpenResty 的 核心

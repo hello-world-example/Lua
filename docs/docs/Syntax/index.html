@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="基础语法 注释 -- 单行注释 --- 单行注释（IDEA 中会自动生成注释） --[[ 多行注释 --]] 变量 -- 全局变量 var = 10 print(var) -- 删除变量 var = nil print(var) -- 局部变量 local b = 5 do local a = 6 -- 局部变量 var = 6 -- 全局变量 print(a, var); -- 6 6 end -- 变量赋值 a, b = 10, 2 * x 类型 print(type(nil)) --&gt; nil print(type(true)) --&gt; boolean print(type(10.4 * 3)) --&gt; number print(type(&#39;Hello world&#39;)) --&gt; string print(type(&#34;Hello world&#34;)) --&gt; string print(type(type(X))) --&gt; string print(type(print)) --&gt; function print(type(type)) --&gt; function print(type({ k1=v1, k2=v2 })) --&gt; table -- userdata	表示任意存储在变量中的C数据结构 -- thread	表示执行的独立线路，用于执行协同程序 字符串 s1 = &#34;this is string1&#34; s2 = &#39;this is string2&#39; s3 = [[这是 多行字符串 ]] -- 字符串拼接 print(&#34;a&#34; ."><meta property="og:title" content="" />
+<meta property="og:description" content="基础语法 注释 -- 单行注释 --- 单行注释（IDEA 中会自动生成注释） --[[ 多行注释 --]] 变量 -- 全局变量 var = 10 print(var) -- 删除变量 var = nil print(var) -- 局部变量 local b = 5 do local a = 6 -- 局部变量 var = 6 -- 全局变量 print(a, var); -- 6 6 end -- 变量赋值 a, b = 10, 2 * x 类型 print(type(nil)) --&gt; nil print(type(true)) --&gt; boolean print(type(10.4 * 3)) --&gt; number print(type(&#39;Hello world&#39;)) --&gt; string print(type(&#34;Hello world&#34;)) --&gt; string print(type(type(X))) --&gt; string print(type(print)) --&gt; function print(type(type)) --&gt; function print(type({ k1=v1, k2=v2 })) --&gt; table -- userdata	表示任意存储在变量中的C数据结构 -- thread	表示执行的独立线路，用于执行协同程序 字符串 s1 = &#34;this is string1&#34; s2 = &#39;this is string2&#39; s3 = [[这是 多行字符串 ]] -- 字符串拼接 print(&#34;a&#34; ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Syntax/" />
+
+<title>Syntax | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/"class=active>语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Syntax</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础语法">基础语法</a>
+      <ul>
+        <li><a href="#注释">注释</a></li>
+        <li><a href="#变量">变量</a></li>
+        <li><a href="#类型">类型</a></li>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#数组table">数组（table）</a></li>
+        <li><a href="#字典table">字典（table）</a></li>
+        <li><a href="#条件">条件</a></li>
+        <li><a href="#关系运算">关系运算</a></li>
+        <li><a href="#循环">循环</a></li>
+        <li><a href="#函数function">函数（function）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="基础语法">基础语法</h1>
+<h2 id="注释">注释</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- 单行注释</span>
+
+<span style="color:#75715e">--- 单行注释（IDEA 中会自动生成注释）</span>
+
+<span style="color:#75715e">--[[
+</span><span style="color:#75715e">多行注释
+</span><span style="color:#75715e">--]]</span>
+</code></pre></div><h2 id="变量">变量</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- 全局变量</span>
+var <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+print(var)
+
+<span style="color:#75715e">-- 删除变量</span>
+var <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+print(var)
+
+<span style="color:#75715e">-- 局部变量</span>
+<span style="color:#66d9ef">local</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+
+<span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">local</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>     <span style="color:#75715e">-- 局部变量</span>
+    var <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>         <span style="color:#75715e">-- 全局变量</span>
+    print(a, var);  <span style="color:#75715e">-- 6 6</span>
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 变量赋值</span>
+a, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> x
+</code></pre></div><h2 id="类型">类型</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">print(type(<span style="color:#66d9ef">nil</span>))                <span style="color:#75715e">--&gt; nil</span>
+print(type(<span style="color:#66d9ef">true</span>))               <span style="color:#75715e">--&gt; boolean</span>
+print(type(<span style="color:#ae81ff">10.4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>))           <span style="color:#75715e">--&gt; number</span>
+print(type(<span style="color:#e6db74">&#39;Hello world&#39;</span>))      <span style="color:#75715e">--&gt; string</span>
+print(type(<span style="color:#e6db74">&#34;Hello world&#34;</span>))      <span style="color:#75715e">--&gt; string</span>
+print(type(type(X)))            <span style="color:#75715e">--&gt; string</span>
+print(type(print))              <span style="color:#75715e">--&gt; function</span>
+print(type(type))               <span style="color:#75715e">--&gt; function</span>
+print(type({ k1<span style="color:#f92672">=</span>v1, k2<span style="color:#f92672">=</span>v2 }))   <span style="color:#75715e">--&gt; table</span>
+
+
+<span style="color:#75715e">-- userdata	表示任意存储在变量中的C数据结构</span>
+<span style="color:#75715e">-- thread	表示执行的独立线路，用于执行协同程序</span>
+</code></pre></div><h2 id="字符串">字符串</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">s1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;this is string1&#34;</span>
+s2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;this is string2&#39;</span>
+
+s3 <span style="color:#f92672">=</span> <span style="color:#e6db74">[[这是
+</span><span style="color:#e6db74">多行字符串
+</span><span style="color:#e6db74">]]</span>
+
+
+<span style="color:#75715e">-- 字符串拼接</span>
+print(<span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">..</span> <span style="color:#e6db74">&#39;b&#39;</span>)
+
+<span style="color:#75715e">-- + 操作会被转为 number 相加</span>
+print(<span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)
+
+<span style="color:#75715e">-- 计算字符串长度</span>
+print(<span style="color:#f92672">#</span>s3)             <span style="color:#75715e">-- 23</span>
+print(string.len(s3))  <span style="color:#75715e">-- 23</span>
+print(utf8.len(s3))    <span style="color:#75715e">-- 9</span>
+</code></pre></div><h2 id="数组table">数组（table）</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> array <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;pear&#34;</span>, <span style="color:#e6db74">&#34;orange&#34;</span>, <span style="color:#e6db74">&#34;grape&#34;</span> }
+
+<span style="color:#75715e">-- 0 下标是 nil</span>
+print(array[<span style="color:#ae81ff">0</span>])
+
+<span style="color:#75715e">-- 下标从 1 开始</span>
+print(array[<span style="color:#ae81ff">1</span>])
+print(array[<span style="color:#ae81ff">4</span>])
+
+<span style="color:#75715e">-- 遍历</span>
+<span style="color:#66d9ef">for</span> i, v <span style="color:#66d9ef">in</span> ipairs(array) <span style="color:#66d9ef">do</span>
+    print(i <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">..</span> v)
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e">-- 1 apple</span>
+<span style="color:#75715e">-- 2 pear</span>
+<span style="color:#75715e">-- 3 orange</span>
+<span style="color:#75715e">-- 4 grape</span>
+
+
+array[<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;seven&#34;</span>
+<span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(array) <span style="color:#66d9ef">do</span>
+    print(k <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">..</span> v)
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e">-- 1 apple</span>
+<span style="color:#75715e">-- 2 pear</span>
+<span style="color:#75715e">-- 3 orange</span>
+<span style="color:#75715e">-- 4 grape</span>
+<span style="color:#75715e">-- 7 seven</span>
+
+array[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+<span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(array) <span style="color:#66d9ef">do</span>
+    print(k <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">..</span> v)
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e">-- 2 pear</span>
+<span style="color:#75715e">-- 3 orange</span>
+<span style="color:#75715e">-- 4 grape</span>
+<span style="color:#75715e">-- 7 seven</span>
+
+<span style="color:#66d9ef">for</span>	 i, v <span style="color:#66d9ef">in</span> ipairs(array) <span style="color:#66d9ef">do</span>
+    print(i <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">..</span> v)
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e">-- 2 pear</span>
+<span style="color:#75715e">-- 3 orange</span>
+<span style="color:#75715e">-- 4 grape</span>
+<span style="color:#75715e">-- 7 seven</span>
+</code></pre></div><h2 id="字典table">字典（table）</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> dict <span style="color:#f92672">=</span> {
+    key1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value1&#34;</span>,
+    key2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value2&#34;</span>,
+}
+
+print(dict.key1)
+
+print(dict[<span style="color:#e6db74">&#39;key1&#39;</span>])
+
+<span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(dict) <span style="color:#66d9ef">do</span>
+    print(k <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34; : &#34;</span> <span style="color:#f92672">..</span> v)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h2 id="条件">条件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span>
+    print(<span style="color:#e6db74">&#34;零&#34;</span>)
+<span style="color:#66d9ef">elseif</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">then</span>
+    print(<span style="color:#e6db74">&#34;壹&#34;</span>)
+<span style="color:#66d9ef">else</span>
+    print(<span style="color:#e6db74">&#34;-&#34;</span>)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h2 id="关系运算">关系运算</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">a <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+b <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+c <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (a <span style="color:#f92672">and</span> b) <span style="color:#f92672">or</span> c <span style="color:#66d9ef">then</span>
+    print(<span style="color:#e6db74">&#34;not (a and b) or c --&gt;&#34;</span>, <span style="color:#66d9ef">true</span>)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- a and b --&gt; false</span>
+<span style="color:#75715e">-- not (a and b) --&gt; not(false) --&gt; true</span>
+<span style="color:#75715e">-- true or c --&gt; true</span>
+</code></pre></div><h2 id="循环">循环</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- while 循环</span>
+<span style="color:#66d9ef">local</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">do</span>
+    i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- for 循环（初始值0，到 10 结束，步长为 1）</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span>
+    print(i)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- for 循环（初始值 10，到 0 结束，步长为 -1）</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span>
+    print(i)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- repeat 循环</span>
+a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">repeat</span>
+    a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">until</span> (a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">15</span>)
+
+<span style="color:#75715e">-- break 语句</span>
+<span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">do</span>
+    i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">break</span>
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- goto（continue）</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">goto</span> continue
+    <span style="color:#66d9ef">end</span>
+    print(i)
+    <span style="color:#75715e">-- label 的定义</span>
+    :: continue ::
+<span style="color:#66d9ef">end</span>
+
+</code></pre></div><h2 id="函数function">函数（function）</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun1</span>(n)
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">else</span>
+        <span style="color:#66d9ef">return</span> n <span style="color:#f92672">+</span> fun1(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+
+print(fun1(<span style="color:#ae81ff">5</span>))
+
+<span style="color:#75715e">-- function 赋值</span>
+fun2 <span style="color:#f92672">=</span> fun1
+print(fun2(<span style="color:#ae81ff">5</span>))
+
+<span style="color:#75715e">-- 返回多值</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">return2</span>()
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">end</span>
+
+a, b <span style="color:#f92672">=</span> return2()
+print(a, b)
+
+
+<span style="color:#75715e">-- 可变参数</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">average</span>(...)
+    <span style="color:#66d9ef">local</span> arg <span style="color:#f92672">=</span> { ... }
+
+    result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i, v <span style="color:#66d9ef">in</span> pairs(arg) <span style="color:#66d9ef">do</span>
+        result <span style="color:#f92672">=</span> result <span style="color:#f92672">+</span> v
+    <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">return</span> result <span style="color:#f92672">/</span> <span style="color:#f92672">#</span>arg
+<span style="color:#66d9ef">end</span>
+
+print(<span style="color:#e6db74">&#34;平均值&#34;</span>, average(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))
+
+<span style="color:#75715e">-- 获取可变参数</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(...)
+    <span style="color:#75715e">-- select(&#39;#&#39;, ...) 获取可变参数长度</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, select(<span style="color:#e6db74">&#39;#&#39;</span>, ...) <span style="color:#66d9ef">do</span>
+        <span style="color:#75715e">-- 读取可变参数索引</span>
+        <span style="color:#66d9ef">local</span> arg <span style="color:#f92672">=</span> select(i, ...);
+        print(<span style="color:#e6db74">&#34;arg&#34;</span>, arg);
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+
+foo(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;2&#34;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#ae81ff">4</span>);
+<span style="color:#75715e">-- arg	1</span>
+<span style="color:#75715e">-- arg	2</span>
+<span style="color:#75715e">-- arg	nil</span>
+<span style="color:#75715e">-- arg	4</span>
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Syntax.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础语法">基础语法</a>
+      <ul>
+        <li><a href="#注释">注释</a></li>
+        <li><a href="#变量">变量</a></li>
+        <li><a href="#类型">类型</a></li>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#数组table">数组（table）</a></li>
+        <li><a href="#字典table">字典（table）</a></li>
+        <li><a href="#条件">条件</a></li>
+        <li><a href="#关系运算">关系运算</a></li>
+        <li><a href="#循环">循环</a></li>
+        <li><a href="#函数function">函数（function）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
