@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LuaRocks  LuaRocks is the package manager for Lua modules.
+ 安装 $ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz $ tar zxvf luarocks-3.3.1.tar.gz $ cd luarocks-3.3.1 # ./configure -h $ ./configure --prefix=/usr/local/luarocks --rocks-tree=/usr/local # $ sudo make bootstrap $ make $ sudo make install # $ /usr/local/luarocks/bin/luarocks config ... # 创建链接 $ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks $ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin    luarocks - The LuaRocks command-line interface.  luarocks-admin - The repository management tool."><meta property="og:title" content="" />
+<meta property="og:description" content="LuaRocks  LuaRocks is the package manager for Lua modules.
+ 安装 $ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz $ tar zxvf luarocks-3.3.1.tar.gz $ cd luarocks-3.3.1 # ./configure -h $ ./configure --prefix=/usr/local/luarocks --rocks-tree=/usr/local # $ sudo make bootstrap $ make $ sudo make install # $ /usr/local/luarocks/bin/luarocks config ... # 创建链接 $ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks $ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin    luarocks - The LuaRocks command-line interface.  luarocks-admin - The repository management tool." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/" />
+
+<title>Lua Rocks | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/"class=active>LuaRocks</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Lua Rocks</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luarocks">LuaRocks</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#使用">使用</a></li>
+        <li><a href="#卸载">卸载</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="luarocks">LuaRocks</h1>
+<blockquote>
+<p><strong>LuaRocks</strong> is the package manager for Lua modules.</p>
+</blockquote>
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
+
+$ tar zxvf luarocks-3.3.1.tar.gz
+
+$ cd luarocks-3.3.1
+
+<span style="color:#75715e"># ./configure -h</span>
+$ ./configure --prefix<span style="color:#f92672">=</span>/usr/local/luarocks --rocks-tree<span style="color:#f92672">=</span>/usr/local
+
+<span style="color:#75715e"># $ sudo make bootstrap</span>
+$ make
+$ sudo make install
+
+# 
+$ /usr/local/luarocks/bin/luarocks config
+...
+
+<span style="color:#75715e"># 创建链接</span>
+$ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks
+$ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin
+</code></pre></div><blockquote>
+<ul>
+<li>
+  <a href="https://github.com/luarocks/luarocks/wiki/luarocks">luarocks</a> - The LuaRocks command-line interface.</li>
+<li>
+  <a href="https://github.com/luarocks/luarocks/wiki/luarocks-admin">luarocks-admin</a> - The repository management tool.</li>
+</ul>
+</blockquote>
+<h2 id="使用">使用</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 不要在 luarocks-3.3.1 的 编译目录执行以下操作</span>
+$ cd ~
+
+$ sudo luarocks install luautf8 
+
+$ luarocks list
+
+Rocks installed <span style="color:#66d9ef">for</span> Lua 5.3
+---------------------------
+
+luautf8
+   0.1.3-1 <span style="color:#f92672">(</span>installed<span style="color:#f92672">)</span> - /opt/package/luarocks-3.3.1/./lua_modules/lib/luarocks/rocks-5.3
+
+<span style="color:#75715e"># lua-utf8.so</span>
+$ ll /usr/local/lib/lua/5.3/
+
+<span style="color:#75715e"># 尝试 require</span>
+$ lua
+&gt; lutf8 <span style="color:#f92672">=</span> require<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;lua-utf8&#39;</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="卸载">卸载</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo rm -rf /opt/package/luarocks-3.3.1
+$ sudo rm -rf /usr/local/luarocks
+$ sudo rm -rf /usr/local/bin/luarocks*
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li><a href="http://www.luarocks.org/">http://www.luarocks.org/</a></li>
+<li>
+  <a href="https://github.com/luarocks/luarocks">luarocks / luarocks</a></li>
+<li>
+  <a href="https://segmentfault.com/a/1190000003920034">Lua 包管理工具 Luarocks 详解</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Action/LuaRocks.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luarocks">LuaRocks</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#使用">使用</a></li>
+        <li><a href="#卸载">卸载</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

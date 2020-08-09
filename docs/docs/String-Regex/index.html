@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="正则查找 Read More   Lua 的字符串匹配与正则表达式  OpenResty最佳实践 &gt; 正则表达式  "><meta property="og:title" content="" />
-<meta property="og:description" content="正则查找 Read More   Lua 的字符串匹配与正则表达式  OpenResty最佳实践 &gt; 正则表达式  " />
+<meta name="description" content="正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%."><meta property="og:title" content="" />
+<meta property="og:description" content="正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/String-Regex/" />
-
+<meta property="article:modified_time" content="2020-08-09T17:35:08+08:00" />
 <title>String Regex | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -55,6 +55,16 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/String-Function/">string</a></li>
 <li>
   <a href="/Lua/docs/String-Regex/"class=active>正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/">LuaRocks</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+</ul>
+</li>
 </ul>
 
 
@@ -101,6 +111,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#正则查找">正则查找</a>
       <ul>
+        <li><a href="#pattern">Pattern</a></li>
+        <li><a href="#平衡匹配">平衡匹配</a></li>
         <li><a href="#read-more">Read More</a></li>
       </ul>
     </li>
@@ -116,7 +128,137 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="正则查找">正则查找</h1>
-<h2 id="read-more">Read More</h2>
+<ul>
+<li>替换： <code>str, count = string.gsub(str, pattern, target [,num])</code></li>
+<li>查找：<code>startI, endI = string.find(str, pattern, [init, [end]])</code></li>
+<li>匹配：<code>str = string.match(str, pattern [, start])</code></li>
+<li>匹配：<code>fun = string.gmatch(str, pattern)</code></li>
+</ul>
+<h2 id="pattern">Pattern</h2>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>·</code></td>
+<td>字符</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%a</code>、<code>%A</code></td>
+<td>字母、非字母</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%l</code>、<code>%u</code></td>
+<td>小写字母、大写字母</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%d</code></td>
+<td>数字</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%s</code></td>
+<td>空白</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%w</code></td>
+<td>字符|数字</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%转义</code></td>
+<td>转义</td>
+<td><code>%%</code> 匹配 <code>%</code>，<code>%.</code> 匹配 <code>.</code></td>
+</tr>
+<tr>
+<td align="center"><code>%bxy</code></td>
+<td>平衡匹配</td>
+<td><code>%b()</code>匹配<code>()</code> 内的内容</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code>、<code>[^]</code></td>
+<td>包含|不包含 中括号中的字符</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>*</code></td>
+<td>【数量】0 ~ n</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>+</code></td>
+<td>【数量】1 ~ n</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>-</code></td>
+<td>【数量】0 ~ n，<strong>匹配尽可能短的串</strong></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>?</code></td>
+<td>【数量】0 ~ 1</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%p</code></td>
+<td>标点符号</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%x</code></td>
+<td>16 进制</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="平衡匹配">平衡匹配</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">html <span style="color:#f92672">=</span> <span style="color:#e6db74">[[
+</span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span><span style="color:#e6db74">&lt;html&gt;
+</span><span style="color:#e6db74">  &lt;head&gt;
+</span><span style="color:#e6db74">    &lt;title&gt;tttt&lt;/title&gt;
+</span><span style="color:#e6db74">  &lt;/head&gt;
+</span><span style="color:#e6db74">  &lt;body&gt;
+</span><span style="color:#e6db74">  &lt;/body&gt;
+</span><span style="color:#e6db74">&lt;html&gt;
+</span><span style="color:#e6db74">]]</span>
+
+<span style="color:#66d9ef">for</span> word <span style="color:#66d9ef">in</span> string.gmatch(html, <span style="color:#e6db74">&#34;%b&lt;&gt;&#34;</span>) <span style="color:#66d9ef">do</span>
+    print(word)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- &gt; 所有的标签</span>
+
+log <span style="color:#f92672">=</span> <span style="color:#e6db74">[[
+</span><span style="color:#e6db74"> 127.0.0.1 - - [07/Jun/2020:00:28:06 +0800] &#34;GET / HTTP/1.1&#34; 200 2277 &#34;http://bbs.sdbeta.com/read-htm-tid-572414.html&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 Edg/83.0.478.45&#34;
+</span><span style="color:#e6db74">]]</span>
+
+<span style="color:#66d9ef">for</span> word <span style="color:#66d9ef">in</span> string.gmatch(log, <span style="color:#e6db74">&#34;%b[]&#34;</span>) <span style="color:#66d9ef">do</span>
+    print(word)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- &gt; [07/Jun/2020:00:28:06 +0800]</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
 <ul>
 <li>
   <a href="https://www.cnblogs.com/meamin9/p/4502461.html">Lua 的字符串匹配与正则表达式</a></li>
@@ -133,6 +275,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/48f5c0b63ec4d70d9b0616b8b71e13d1891e6123" title='Last modified by kaibin.yang | Aug 9, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Aug 9, 2020</span>
+    </a>
+  </div>
 
 
 
@@ -167,6 +317,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#正则查找">正则查找</a>
       <ul>
+        <li><a href="#pattern">Pattern</a></li>
+        <li><a href="#平衡匹配">平衡匹配</a></li>
         <li><a href="#read-more">Read More</a></li>
       </ul>
     </li>

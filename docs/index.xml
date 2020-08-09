@@ -15,7 +15,35 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks  中文处理    </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Action/Chinese/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Action/Chinese/</guid>
+      <description>中文处理 Read More   starwing / luautf8  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</guid>
+      <description>LuaRocks  LuaRocks is the package manager for Lua modules.
+ 安装 $ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz $ tar zxvf luarocks-3.3.1.tar.gz $ cd luarocks-3.3.1 # ./configure -h $ ./configure --prefix=/usr/local/luarocks --rocks-tree=/usr/local # $ sudo make bootstrap $ make $ sudo make install # $ /usr/local/luarocks/bin/luarocks config ... # 创建链接 $ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks $ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin    luarocks - The LuaRocks command-line interface.  luarocks-admin - The repository management tool.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Module/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Module/</guid>
+      <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
     </item>
     
     <item>
@@ -43,7 +71,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/docs/String-Regex/</guid>
-      <description>正则查找 Read More   Lua 的字符串匹配与正则表达式  OpenResty最佳实践 &amp;gt; 正则表达式  </description>
+      <description>正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%.</description>
     </item>
     
     <item>

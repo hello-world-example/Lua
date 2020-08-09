@@ -8,7 +8,7 @@
 <meta property="og:description" content="基础语法 注释 -- 单行注释 --- 单行注释（IDEA 中会自动生成注释） --[[ 多行注释 --]] 变量 -- 全局变量 var = 10 print(var) -- 删除变量 var = nil print(var) -- 局部变量 local b = 5 do local a = 6 -- 局部变量 var = 6 -- 全局变量 print(a, var); -- 6 6 end -- 变量赋值 a, b = 10, 2 * x 类型 print(type(nil)) --&gt; nil print(type(true)) --&gt; boolean print(type(10.4 * 3)) --&gt; number print(type(&#39;Hello world&#39;)) --&gt; string print(type(&#34;Hello world&#34;)) --&gt; string print(type(type(X))) --&gt; string print(type(print)) --&gt; function print(type(type)) --&gt; function print(type({ k1=v1, k2=v2 })) --&gt; table -- userdata	表示任意存储在变量中的C数据结构 -- thread	表示执行的独立线路，用于执行协同程序 字符串 s1 = &#34;this is string1&#34; s2 = &#39;this is string2&#39; s3 = [[这是 多行字符串 ]] -- 字符串拼接 print(&#34;a&#34; ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Syntax/" />
-
+<meta property="article:modified_time" content="2020-08-09T17:35:08+08:00" />
 <title>Syntax | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -55,6 +55,16 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/String-Function/">string</a></li>
 <li>
   <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/">LuaRocks</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+</ul>
+</li>
 </ul>
 
 
@@ -367,6 +377,14 @@ foo(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;2&#34
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/48f5c0b63ec4d70d9b0616b8b71e13d1891e6123" title='Last modified by kaibin.yang | Aug 9, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Aug 9, 2020</span>
+    </a>
+  </div>
 
 
 
