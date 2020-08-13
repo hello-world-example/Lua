@@ -10,4 +10,6 @@ headless: true
 - **Action**
   - [LuaRocks]({{< relref "/docs/Action/LuaRocks.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
+- **LuaJIT**
+  - [快速开始]({{< relref "/docs/LuaJIT/Quick-Start.md" >}})
 

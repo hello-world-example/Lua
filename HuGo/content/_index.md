@@ -10,6 +10,8 @@ type: docs
   - [Lua Reference manuals](https://www.lua.org/manual/)
 - 中文资料
   - [Lua 5.3 参考手册](https://www.runoob.com/manual/lua53doc/contents.html)
+- LuaJIT
+  - http://luajit.org/
 - 应用案例
   - [Redis Lua scripting](https://redis.io/commands/eval): Redis 对 Lua 脚本的支持
   - [OpenResty®](http://openresty.org/cn/) 是一款基于 NGINX 和 Lua 的 Web 平台

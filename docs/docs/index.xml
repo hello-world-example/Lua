@@ -30,6 +30,15 @@
     
     <item>
       <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/LuaJIT/Quick-Start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/LuaJIT/Quick-Start/</guid>
+      <description>LuaJIT 快速开始 编译安装 # 下载解压 $ curl -R -O http://luajit.org/download/LuaJIT-2.0.5.tar.gz $ tar zxvf LuaJIT-2.0.5.tar.gz $ cd LuaJIT-2.0.5 # 查看文档 $ open doc/install.html # Undefined symbols for architecture x86_64: # ld: symbol(s) not found for architecture x86_64 $ vim src/Makefile # BUILDMODE=mixed # 注释掉 BUILDMODE=dynamic # 打开此行 # 安装 $ sudo make install PREFIX=/usr/local/luajit # 创建链接 $ ln -s /usr/local/luajit/bin/luajit-2.0.5 /usr/local/bin/luajit $ luajit -h usage: luajit [options]... [script [args]...]. Available options are: -e chunk Execute string &amp;#39;chunk&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://hello-world-example.github.io/Lua/docs/Module/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
