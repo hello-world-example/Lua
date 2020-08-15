@@ -26,3 +26,7 @@ log = [[
 for word in string.gmatch(log, "%b[]") do
     print(word)
 end
+
+print("string.match")
+print(string.match("[07/Jun/2020:00:28:06 +0800]","%[(.+)/(.+)%]"))
+
