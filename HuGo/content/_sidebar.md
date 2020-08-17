@@ -11,6 +11,8 @@ headless: true
   - [LuaRocks 模块管理]({{< relref "/docs/Action/LuaRocks.md" >}})
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
+- **Module**
+  - [LuaSocket 网络工具]({{< relref "/docs/Module/LuaSocket.md" >}})
 - **LuaJIT**
   - [快速开始]({{< relref "/docs/LuaJIT/Quick-Start.md" >}})
 

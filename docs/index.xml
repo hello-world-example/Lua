@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks 模块管理  LuaCheck 静态检查  中文处理   LuaJIT   快速开始    </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks 模块管理  LuaCheck 静态检查  中文处理   Module   LuaSocket 网络工具   LuaJIT   快速开始    </description>
     </item>
     
     <item>
@@ -62,6 +62,15 @@
       
       <guid>https://hello-world-example.github.io/Lua/docs/Module/</guid>
       <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Module/LuaSocket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Module/LuaSocket/</guid>
+      <description>LuaSocket 网络工具 安装 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so SMTP 邮件 简单文本邮件 local smtp = require(&amp;#34;socket.smtp&amp;#34;) local from = &amp;#34;noreply@kail.xyz&amp;#34; result, ex = smtp.send { server = &amp;#34;smtp.exmail.qq.com&amp;#34;, user = from, password = &amp;#34;xxxx&amp;#34;, from = from, rcpt = { &amp;#34;admin@kail.xyz&amp;#34; }, source = smtp.message({ headers = { from = &amp;#34;发件人信息 &amp;lt;&amp;#34; .. from .. &amp;#34;&amp;gt;&amp;#34;, to = &amp;#34;admin@kail.xyz&amp;#34;, cc = &amp;#34;假的抄送&amp;lt;假的邮箱@example.com&amp;gt;&amp;#34;, subject = &amp;#34;My first message&amp;#34; }, body = &amp;#34;If it does, &amp;lt;span style=&amp;#39;color:red&amp;#39;&amp;gt;I can send you another 1000 copies.</description>
     </item>
     
     <item>

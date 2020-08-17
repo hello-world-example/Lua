@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LuaSocket 网络工具 安装 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so SMTP 邮件 简单文本邮件 local smtp = require(&#34;socket.smtp&#34;) local from = &#34;noreply@kail.xyz&#34; result, ex = smtp.send { server = &#34;smtp.exmail.qq.com&#34;, user = from, password = &#34;xxxx&#34;, from = from, rcpt = { &#34;admin@kail.xyz&#34; }, source = smtp.message({ headers = { from = &#34;发件人信息 &lt;&#34; .. from .. &#34;&gt;&#34;, to = &#34;admin@kail.xyz&#34;, cc = &#34;假的抄送&lt;假的邮箱@example.com&gt;&#34;, subject = &#34;My first message&#34; }, body = &#34;If it does, &lt;span style=&#39;color:red&#39;&gt;I can send you another 1000 copies."><meta property="og:title" content="" />
+<meta property="og:description" content="LuaSocket 网络工具 安装 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so SMTP 邮件 简单文本邮件 local smtp = require(&#34;socket.smtp&#34;) local from = &#34;noreply@kail.xyz&#34; result, ex = smtp.send { server = &#34;smtp.exmail.qq.com&#34;, user = from, password = &#34;xxxx&#34;, from = from, rcpt = { &#34;admin@kail.xyz&#34; }, source = smtp.message({ headers = { from = &#34;发件人信息 &lt;&#34; .. from .. &#34;&gt;&#34;, to = &#34;admin@kail.xyz&#34;, cc = &#34;假的抄送&lt;假的邮箱@example.com&gt;&#34;, subject = &#34;My first message&#34; }, body = &#34;If it does, &lt;span style=&#39;color:red&#39;&gt;I can send you another 1000 copies." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Module/LuaSocket/" />
+
+<title>Lua Socket | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/">LuaRocks 模块管理</a></li>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/"class=active>LuaSocket 网络工具</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Lua Socket</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luasocket-网络工具">LuaSocket 网络工具</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#smtp-邮件">SMTP 邮件</a>
+          <ul>
+            <li><a href="#简单文本邮件">简单文本邮件</a></li>
+            <li><a href="#html-邮件">HTML 邮件</a></li>
+          </ul>
+        </li>
+        <li><a href="#http-请求">HTTP 请求</a>
+          <ul>
+            <li><a href="#simple-get">Simple Get</a></li>
+          </ul>
+        </li>
+        <li><a href="#post">POST</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="luasocket-网络工具">LuaSocket 网络工具</h1>
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo luarocks install luasocket
+
+$ /usr/local/lib/lua/5.3/socket
+core.so
+serial.so
+unix.so
+</code></pre></div><h2 id="smtp-邮件">SMTP 邮件</h2>
+<h3 id="简单文本邮件">简单文本邮件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> smtp <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;socket.smtp&#34;</span>)
+
+<span style="color:#66d9ef">local</span> from <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noreply@kail.xyz&#34;</span>
+result, ex <span style="color:#f92672">=</span> smtp.send {
+    server <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smtp.exmail.qq.com&#34;</span>,
+    user <span style="color:#f92672">=</span> from,
+    password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxxx&#34;</span>,
+
+    from <span style="color:#f92672">=</span> from,
+    rcpt <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;admin@kail.xyz&#34;</span> },
+
+    source <span style="color:#f92672">=</span> smtp.message({
+        headers <span style="color:#f92672">=</span> {
+            from <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;发件人信息 &lt;&#34;</span> <span style="color:#f92672">..</span> from <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;&gt;&#34;</span>,
+            to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;admin@kail.xyz&#34;</span>,
+            cc <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;假的抄送&lt;假的邮箱@example.com&gt;&#34;</span>,
+            subject <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My first message&#34;</span>
+        },
+        body <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;If it does, &lt;span style=&#39;color:red&#39;&gt;I can send you another 1000 copies.&lt;span&gt;&#34;</span>
+    })
+}
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> result <span style="color:#66d9ef">then</span>
+    print(<span style="color:#e6db74">&#34;error &#34;</span>, ex)
+<span style="color:#66d9ef">else</span>
+    print(<span style="color:#e6db74">&#34;send ok!&#34;</span>, result)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h3 id="html-邮件">HTML 邮件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">source <span style="color:#f92672">=</span> smtp.message({
+    headers <span style="color:#f92672">=</span> { ...  },
+    body <span style="color:#f92672">=</span> {
+      [<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> {
+        headers <span style="color:#f92672">=</span> {
+          [<span style="color:#e6db74">&#34;content-type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/html; charset=&#34;UTF-8&#34;&#39;</span>,
+        },
+        body <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;If it does, &lt;span style=&#39;color:red&#39;&gt;I can send you another 1000 copies.&lt;span&gt;&#34;</span>
+      }
+    }
+  })
+</code></pre></div><h2 id="http-请求">HTTP 请求</h2>
+<h3 id="simple-get">Simple Get</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> http <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;socket.http&#34;</span>)
+
+<span style="color:#66d9ef">local</span> resp_body, status, headers, line <span style="color:#f92672">=</span> http.request(<span style="color:#e6db74">&#34;http://httpbin.org/anything&#34;</span>)
+print(status)
+print(line)
+<span style="color:#66d9ef">for</span> name, value <span style="color:#66d9ef">in</span> pairs(headers) <span style="color:#66d9ef">do</span>
+    print(name, value)
+<span style="color:#66d9ef">end</span>
+print()
+print(resp_body)
+</code></pre></div><h2 id="post">POST</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> http <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;socket.http&#34;</span>)
+<span style="color:#66d9ef">local</span> ltn12 <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;ltn12&#34;</span>)
+
+<span style="color:#66d9ef">local</span> response_body <span style="color:#f92672">=</span> {  }
+<span style="color:#66d9ef">local</span> resp, status, headers, line <span style="color:#f92672">=</span> http.request {
+    method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://httpbin.org/anything&#34;</span>,
+    sink <span style="color:#f92672">=</span> ltn12.sink.table(response_body)
+}
+
+print(status)
+print(line)
+<span style="color:#66d9ef">for</span> name, value <span style="color:#66d9ef">in</span> pairs(headers) <span style="color:#66d9ef">do</span>
+    print(name, value)
+<span style="color:#66d9ef">end</span>
+print(resp)
+print(response_body[<span style="color:#ae81ff">1</span>])
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="http://w3.impa.br/~diego/software/luasocket/">LuaSocket 官网</a></li>
+<li>
+  <a href="http://w3.impa.br/~diego/software/luasocket/reference.html">LuaSocket Reference</a>
+<ul>
+<li>
+  <a href="http://w3.impa.br/~diego/software/luasocket/http.html">HTTP</a> / 
+  <a href="http://w3.impa.br/~diego/software/luasocket/tcp.html">TCP</a> / 
+  <a href="http://w3.impa.br/~diego/software/luasocket/smtp.html">SMTP</a> / 
+  <a href="http://w3.impa.br/~diego/software/luasocket/dns.html">DNS</a> / 
+  <a href="http://w3.impa.br/~diego/software/luasocket/url.html">URL</a></li>
+</ul>
+</li>
+<li>
+  <a href="https://github.com/diegonehab/luasocket">diegonehab / luasocket</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Module/LuaSocket.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luasocket-网络工具">LuaSocket 网络工具</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#smtp-邮件">SMTP 邮件</a>
+          <ul>
+            <li><a href="#简单文本邮件">简单文本邮件</a></li>
+            <li><a href="#html-邮件">HTML 邮件</a></li>
+          </ul>
+        </li>
+        <li><a href="#http-请求">HTTP 请求</a>
+          <ul>
+            <li><a href="#simple-get">Simple Get</a></li>
+          </ul>
+        </li>
+        <li><a href="#post">POST</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
