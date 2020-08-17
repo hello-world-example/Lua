@@ -13,6 +13,10 @@
   </url>
   
   <url>
+    <loc>https://hello-world-example.github.io/Lua/docs/Action/LuaCheck/</loc>
+  </url>
+  
+  <url>
     <loc>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</loc>
     <lastmod>2020-08-10T00:31:37+08:00</lastmod>
   </url>
@@ -48,6 +52,11 @@
   </url>
   
   <url>
+    <loc>https://hello-world-example.github.io/Lua/TODO/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hello-world-example.github.io/Lua/categories/</loc>
   </url>
   
@@ -58,7 +67,7 @@
   
   <url>
     <loc>https://hello-world-example.github.io/Lua/</loc>
-    <lastmod>2020-08-15T21:48:30+08:00</lastmod>
+    <lastmod>2020-08-15T21:52:25+08:00</lastmod>
   </url>
   
   <url>

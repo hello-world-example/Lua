@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks  中文处理   LuaJIT   快速开始    </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks 模块管理  LuaCheck 静态检查  中文处理   LuaJIT   快速开始    </description>
     </item>
     
     <item>
@@ -25,6 +25,15 @@
       
       <guid>https://hello-world-example.github.io/Lua/docs/Action/Chinese/</guid>
       <description>中文处理 Read More   starwing / luautf8  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Action/LuaCheck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Action/LuaCheck/</guid>
+      <description>LuaCheck 代码静态分析 安装 $ sudo luarocks install luacheck $ luacheck -h ... Links: Luacheck on GitHub: https://github.com/mpeterv/luacheck Luacheck documentation: https://luacheck.readthedocs.org 使用 $ luacheck test.lua test.lua:18:27: accessing undefined variable html test.lua:22:1: setting non-standard global variable log test.lua:23:121: line is too long (257 &amp;gt; 120) test.lua:26:27: accessing undefined variable log IDEA LuaCheck  安装 EmmyLua 时自带 LuaCheck 插件 配置 LuaCheck 地址 /usr/local/bin/luacheck 右键 Lua 文件，执行 Run LuaCheck 查看结果  Read More   mpeterv/luacheck  Luacheck documentation  </description>
     </item>
     
     <item>
@@ -90,6 +99,15 @@
       
       <guid>https://hello-world-example.github.io/Lua/docs/Syntax/</guid>
       <description>基础语法 注释 -- 单行注释 --- 单行注释（IDEA 中会自动生成注释） --[[ 多行注释 --]] 变量 -- 全局变量 var = 10 print(var) -- 删除变量 var = nil print(var) -- 局部变量 local b = 5 do local a = 6 -- 局部变量 var = 6 -- 全局变量 print(a, var); -- 6 6 end -- 变量赋值 a, b = 10, 2 * x 类型 print(type(nil)) --&amp;gt; nil print(type(true)) --&amp;gt; boolean print(type(10.4 * 3)) --&amp;gt; number print(type(&amp;#39;Hello world&amp;#39;)) --&amp;gt; string print(type(&amp;#34;Hello world&amp;#34;)) --&amp;gt; string print(type(type(X))) --&amp;gt; string print(type(print)) --&amp;gt; function print(type(type)) --&amp;gt; function print(type({ k1=v1, k2=v2 })) --&amp;gt; table -- userdata	表示任意存储在变量中的C数据结构 -- thread	表示执行的独立线路，用于执行协同程序 字符串 s1 = &amp;#34;this is string1&amp;#34; s2 = &amp;#39;this is string2&amp;#39; s3 = [[这是 多行字符串 ]] -- 字符串拼接 print(&amp;#34;a&amp;#34; .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/TODO/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/TODO/</guid>
+      <description>TODO </description>
     </item>
     
   </channel>

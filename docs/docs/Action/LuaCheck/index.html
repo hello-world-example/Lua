@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LuaCheck 代码静态分析 安装 $ sudo luarocks install luacheck $ luacheck -h ... Links: Luacheck on GitHub: https://github.com/mpeterv/luacheck Luacheck documentation: https://luacheck.readthedocs.org 使用 $ luacheck test.lua test.lua:18:27: accessing undefined variable html test.lua:22:1: setting non-standard global variable log test.lua:23:121: line is too long (257 &gt; 120) test.lua:26:27: accessing undefined variable log IDEA LuaCheck  安装 EmmyLua 时自带 LuaCheck 插件 配置 LuaCheck 地址 /usr/local/bin/luacheck 右键 Lua 文件，执行 Run LuaCheck 查看结果  Read More   mpeterv/luacheck  Luacheck documentation  "><meta property="og:title" content="" />
+<meta property="og:description" content="LuaCheck 代码静态分析 安装 $ sudo luarocks install luacheck $ luacheck -h ... Links: Luacheck on GitHub: https://github.com/mpeterv/luacheck Luacheck documentation: https://luacheck.readthedocs.org 使用 $ luacheck test.lua test.lua:18:27: accessing undefined variable html test.lua:22:1: setting non-standard global variable log test.lua:23:121: line is too long (257 &gt; 120) test.lua:26:27: accessing undefined variable log IDEA LuaCheck  安装 EmmyLua 时自带 LuaCheck 插件 配置 LuaCheck 地址 /usr/local/bin/luacheck 右键 Lua 文件，执行 Run LuaCheck 查看结果  Read More   mpeterv/luacheck  Luacheck documentation  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Action/LuaCheck/" />
+
+<title>Lua Check | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/">LuaRocks 模块管理</a></li>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/"class=active>LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Lua Check</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luacheck-代码静态分析">LuaCheck 代码静态分析</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#使用">使用</a></li>
+        <li><a href="#idea-luacheck">IDEA LuaCheck</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="luacheck-代码静态分析">LuaCheck 代码静态分析</h1>
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo luarocks install luacheck
+
+$ luacheck -h
+...
+Links:
+
+   Luacheck on GitHub: https://github.com/mpeterv/luacheck
+   Luacheck documentation: https://luacheck.readthedocs.org
+</code></pre></div><h2 id="使用">使用</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ luacheck test.lua
+
+test.lua:18:27: accessing undefined variable html
+test.lua:22:1: setting non-standard global variable log
+test.lua:23:121: line is too long <span style="color:#f92672">(</span><span style="color:#ae81ff">257</span> &gt; 120<span style="color:#f92672">)</span>
+test.lua:26:27: accessing undefined variable log
+</code></pre></div><h2 id="idea-luacheck">IDEA LuaCheck</h2>
+<ul>
+<li>安装 <code>EmmyLua</code> 时自带 LuaCheck 插件</li>
+<li>配置 LuaCheck 地址 <code>/usr/local/bin/luacheck</code></li>
+<li>右键 Lua 文件，执行 <code>Run LuaCheck</code>  查看结果</li>
+</ul>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://github.com/mpeterv/luacheck">mpeterv/luacheck</a></li>
+<li>
+  <a href="https://luacheck.readthedocs.io/en/stable/index.html">Luacheck documentation</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Action/LuaCheck.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#luacheck-代码静态分析">LuaCheck 代码静态分析</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#使用">使用</a></li>
+        <li><a href="#idea-luacheck">IDEA LuaCheck</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
