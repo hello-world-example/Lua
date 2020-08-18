@@ -4,3 +4,23 @@
 --- DateTime: 2020/8/17 15:57
 ---
 
+local lfs = require("lfs")
+
+
+
+local path = "/Users/kail/Documents/crt"
+for file in lfs.dir(path) do
+    local file_time = string.match(file, "%d+-%d+-%d+_%d+")
+    if file_time then
+        local f = path .. '/' .. file
+        print(f)
+
+        for line in io.lines(f) do
+            print(line)
+            for word in string.gmatch(line, "%b<>") do
+                print(word)
+            end
+        end
+    end
+end
+

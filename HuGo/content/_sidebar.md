@@ -12,7 +12,10 @@ headless: true
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
 - **Module**
+  - [I/O 模块]({{< relref "/docs/Module/IO.md" >}})
   - [LuaSocket 网络工具]({{< relref "/docs/Module/LuaSocket.md" >}})
+  - [LuaFileSystem 文件工具]({{< relref "/docs/Module/LuaFileSystem.md" >}})
+  - [LuaCJSON json 格式处理]({{< relref "/docs/Module/LuaCJSON.md" >}})
 - **LuaJIT**
   - [快速开始]({{< relref "/docs/LuaJIT/Quick-Start.md" >}})
 

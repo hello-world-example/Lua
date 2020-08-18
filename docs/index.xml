@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks 模块管理  LuaCheck 静态检查  中文处理   Module   LuaSocket 网络工具   LuaJIT   快速开始    </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaRocks 模块管理  LuaCheck 静态检查  中文处理   Module   I/O 模块  LuaSocket 网络工具  LuaFileSystem 文件工具  LuaCJSON json 格式处理   LuaJIT   快速开始    </description>
     </item>
     
     <item>
@@ -62,6 +62,39 @@
       
       <guid>https://hello-world-example.github.io/Lua/docs/Module/</guid>
       <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Module/IO/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Module/IO/</guid>
+      <description>I/O 模块 概述  io.xxx 隐式文件句柄 file:xxx 操作文件句柄 local file = io.open(filename [, mode]) 会返回一个文件句柄 预定义文件句柄： io.stdin， io.stdout、 io.stderr 返回值  [1]： 出错时为 nil [2]： 错误消息 [3]： 系统相关的错误码    API           file = io.open(filename [, mode]) - r 读
+- w 写
+- a 追加
+- r+ 更新模式，保留数据
+- w+ 更新模式，删除数据
+- a+ 追加，只允许在末尾追加
+- b 以二进制方式打开文件    file = io.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Module/LuaCJSON/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Module/LuaCJSON/</guid>
+      <description>Lua CJSON 安装 # $ sudo luarocks install lua-cjson $ sudo luarocks install lua-cjson 2.1.0-1 Symbol not found: _lua_objlen $ sudo luarocks remove lua-cjson $ sudo luarocks install lua-cjson 2.1.0-1 初始化方式 -- 出错时抛出异常 local cjson = require &amp;#34;cjson&amp;#34; -- 出错时将返回 nil 和 错误消息 local cjson_safe = require &amp;#34;cjson.safe&amp;#34; -- 独立的编码缓冲区 和 设置 local cjson2 = cjson.new() Example local cjson = require(&amp;#34;cjson&amp;#34;) -- http://www.httpbin.org/anything?a=hello local jsonStr = [[ { &amp;#34;args&amp;#34;:{ &amp;#34;a&amp;#34;:[ &amp;#34;hello&amp;#34;, &amp;#34;world&amp;#34; ] }, &amp;#34;data&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;files&amp;#34;:{ }, &amp;#34;form&amp;#34;:{ }, &amp;#34;headers&amp;#34;:{ &amp;#34;Accept&amp;#34;:&amp;#34;text/html,application/xhtml+xml,application/xml;q=0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Module/LuaFileSystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Module/LuaFileSystem/</guid>
+      <description>LuaFileSystem（lfs） 安装 $ sudo luarocks install luafilesystem Example 遍历文件与属性 local lfs = require(&amp;#34;lfs&amp;#34;) local path = &amp;#34;/Users/kail/Documents/crt&amp;#34; for file in lfs.dir(path) do -- print(type(file)) -- string if file ~= &amp;#34;.&amp;#34; and file ~= &amp;#34;..&amp;#34; then local f = path .. &amp;#39;/&amp;#39; .. file print(f) local attr = lfs.attributes(f) for name, value in pairs(attr) do print(string.format(&amp;#34;%-15s %-10s&amp;#34;, name, value)) end end end Read More   LuaFileSystem File System Library for the Lua Programming Language   Reference    </description>
     </item>
     
     <item>
@@ -116,7 +149,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/TODO/</guid>
-      <description>TODO </description>
+      <description>TODO  lua中的self https://www.jianshu.com/p/8245b1e7c487  </description>
     </item>
     
   </channel>
