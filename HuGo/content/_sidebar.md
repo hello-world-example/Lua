@@ -12,6 +12,7 @@ headless: true
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
 - **Module**
+  - [时间相关]({{< relref "/docs/Module/Time.md" >}})
   - [I/O 模块]({{< relref "/docs/Module/IO.md" >}})
   - [LuaSocket 网络工具]({{< relref "/docs/Module/LuaSocket.md" >}})
   - [LuaFileSystem 文件工具]({{< relref "/docs/Module/LuaFileSystem.md" >}})
