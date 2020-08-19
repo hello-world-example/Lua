@@ -103,7 +103,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/docs/Module/LuaSocket/</guid>
-      <description>LuaSocket 网络工具 安装 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so SMTP 邮件 简单文本邮件 local smtp = require(&amp;#34;socket.smtp&amp;#34;) local from = &amp;#34;noreply@kail.xyz&amp;#34; result, ex = smtp.send { server = &amp;#34;smtp.exmail.qq.com&amp;#34;, user = from, password = &amp;#34;xxxx&amp;#34;, from = from, rcpt = { &amp;#34;admin@kail.xyz&amp;#34; }, source = smtp.message({ headers = { from = &amp;#34;发件人信息 &amp;lt;&amp;#34; .. from .. &amp;#34;&amp;gt;&amp;#34;, to = &amp;#34;admin@kail.xyz&amp;#34;, cc = &amp;#34;假的抄送&amp;lt;假的邮箱@example.com&amp;gt;&amp;#34;, subject = &amp;#34;My first message&amp;#34; }, body = &amp;#34;If it does, &amp;lt;span style=&amp;#39;color:red&amp;#39;&amp;gt;I can send you another 1000 copies.</description>
+      <description>LuaSocket 网络工具 安装 luarocks 方式 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so 编译方式 $ git clone https://github.com/diegonehab/luasocket.git $ cd luasocket $ make &amp;amp;&amp;amp; make install SMTP 邮件 简单文本邮件 local smtp = require(&amp;#34;socket.smtp&amp;#34;) local from = &amp;#34;noreply@kail.xyz&amp;#34; result, ex = smtp.send { server = &amp;#34;smtp.exmail.qq.com&amp;#34;, user = from, password = &amp;#34;xxxx&amp;#34;, from = from, rcpt = { &amp;#34;admin@kail.xyz&amp;#34; }, source = smtp.message({ headers = { from = &amp;#34;发件人信息 &amp;lt;&amp;#34; .</description>
     </item>
     
     <item>
