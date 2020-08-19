@@ -8,7 +8,7 @@
 <meta property="og:description" content="LuaSocket 网络工具 安装 luarocks 方式 $ sudo luarocks install luasocket $ /usr/local/lib/lua/5.3/socket core.so serial.so unix.so 编译方式 $ git clone https://github.com/diegonehab/luasocket.git $ cd luasocket $ make &amp;&amp; make install SMTP 邮件 简单文本邮件 local smtp = require(&#34;socket.smtp&#34;) local from = &#34;noreply@kail.xyz&#34; result, ex = smtp.send { server = &#34;smtp.exmail.qq.com&#34;, user = from, password = &#34;xxxx&#34;, from = from, rcpt = { &#34;admin@kail.xyz&#34; }, source = smtp.message({ headers = { from = &#34;发件人信息 &lt;&#34; ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Module/LuaSocket/" />
-<meta property="article:modified_time" content="2020-08-17T15:58:46+08:00" />
+<meta property="article:modified_time" content="2020-08-19T19:46:16+08:00" />
 <title>Lua Socket | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -69,6 +69,8 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li><strong>Module</strong>
 <ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
 <li>
   <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
 <li>
@@ -279,9 +281,9 @@ print(response_body[<span style="color:#ae81ff">1</span>])
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/fa28f733c7e38984ecf6e701bbee59f1649c7ed9" title='Last modified by kaibin.yang | Aug 17, 2020' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/bdf2ef31c2558c505cc3c751ecd51ea8dc0c2ed1" title='Last modified by kaibin.yang | Aug 19, 2020' target="_blank" rel="noopener">
       <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>Aug 17, 2020</span>
+      <span>Aug 19, 2020</span>
     </a>
   </div>
 
