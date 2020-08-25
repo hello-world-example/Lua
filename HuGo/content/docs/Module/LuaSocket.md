@@ -4,6 +4,8 @@
 
 ## 安装
 
+### luarocks 方式
+
 ```bash
 $ sudo luarocks install luasocket
 
@@ -12,6 +14,18 @@ core.so
 serial.so
 unix.so
 ```
+
+### 编译方式
+
+```bash
+$ git clone https://github.com/diegonehab/luasocket.git
+
+$ cd luasocket
+
+$ make && make install
+```
+
+
 
 
 
