@@ -20,6 +20,17 @@
     
     <item>
       <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Action/Exception/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Action/Exception/</guid>
+      <description>异常处理 error 抛出异常  格式 error (message [, level])  error(&amp;#34;错误原因&amp;#34;)  level 默认是 1 ，代表 抛出错误消息 所在的代码行数 level 是 2 ，代表 抛出错误消息 方法的上一层方法 level 的数字大小，代表抛出异常时，显示的方法调用层级所在的位置 level 是 0 ，代 则不显示错误位置  示例程序
+function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常信息
+# 当 level 为 0 时的错误信息 /usr/local/bin/lua: 错误原因 stack traceback: [C]: in function &amp;#39;error&amp;#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:2: in function &amp;#39;fun&amp;#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:5: in main chunk [C]: in ? # 当 level 为 1 时的错误信息 /usr/local/bin/lua: .</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://hello-world-example.github.io/Lua/docs/Action/LuaCheck/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

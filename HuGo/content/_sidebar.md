@@ -11,6 +11,7 @@ headless: true
   - [LuaRocks 模块管理]({{< relref "/docs/Action/LuaRocks.md" >}})
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
+  - [异常处理]({{< relref "/docs/Action/Exception.md" >}})
 - **Module**
   - [时间相关]({{< relref "/docs/Module/Time.md" >}})
   - [I/O 模块]({{< relref "/docs/Module/IO.md" >}})

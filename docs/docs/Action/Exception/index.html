@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="异常处理 error 抛出异常  格式 error (message [, level])  error(&#34;错误原因&#34;)  level 默认是 1 ，代表 抛出错误消息 所在的代码行数 level 是 2 ，代表 抛出错误消息 方法的上一层方法 level 的数字大小，代表抛出异常时，显示的方法调用层级所在的位置 level 是 0 ，代 则不显示错误位置  示例程序
+function fun(a, b) error(&#34;错误原因&#34;, 2) end fun(1, 2) 异常信息
+# 当 level 为 0 时的错误信息 /usr/local/bin/lua: 错误原因 stack traceback: [C]: in function &#39;error&#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:2: in function &#39;fun&#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:5: in main chunk [C]: in ? # 当 level 为 1 时的错误信息 /usr/local/bin/lua: ."><meta property="og:title" content="" />
+<meta property="og:description" content="异常处理 error 抛出异常  格式 error (message [, level])  error(&#34;错误原因&#34;)  level 默认是 1 ，代表 抛出错误消息 所在的代码行数 level 是 2 ，代表 抛出错误消息 方法的上一层方法 level 的数字大小，代表抛出异常时，显示的方法调用层级所在的位置 level 是 0 ，代 则不显示错误位置  示例程序
+function fun(a, b) error(&#34;错误原因&#34;, 2) end fun(1, 2) 异常信息
+# 当 level 为 0 时的错误信息 /usr/local/bin/lua: 错误原因 stack traceback: [C]: in function &#39;error&#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:2: in function &#39;fun&#39; ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:5: in main chunk [C]: in ? # 当 level 为 1 时的错误信息 /usr/local/bin/lua: ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Action/Exception/" />
+
+<title>Exception | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaRocks/">LuaRocks 模块管理</a></li>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+<li>
+  <a href="/Lua/docs/Action/Exception/"class=active>异常处理</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
+<li>
+  <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/">LuaSocket 网络工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaFileSystem/">LuaFileSystem 文件工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaCJSON/">LuaCJSON json 格式处理</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Exception</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#异常处理">异常处理</a>
+      <ul>
+        <li><a href="#error-抛出异常">error 抛出异常</a></li>
+        <li><a href="#pcall-捕获异常">pcall 捕获异常</a></li>
+        <li><a href="#xpcall">xpcall</a></li>
+        <li><a href="#实现-try-catch-异常捕捉">实现 try-catch 异常捕捉</a>
+          <ul>
+            <li><a href="#特性示例">特性示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="异常处理">异常处理</h1>
+<h2 id="error-抛出异常">error 抛出异常</h2>
+<ul>
+<li>格式 <code>error (message [, level])</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">error(<span style="color:#e6db74">&#34;错误原因&#34;</span>)
+</code></pre></div><ul>
+<li><code>level</code> 默认是 <code>1</code> ，代表 抛出错误消息 所在的代码行数</li>
+<li><code>level</code> 是 <code>2</code> ，代表 抛出错误消息 方法的上一层方法</li>
+<li><code>level</code>  的数字大小，代表抛出异常时，显示的方法调用层级所在的位置</li>
+<li><code>level</code> 是 <code>0</code> ，代 则不显示错误位置</li>
+</ul>
+<p><strong>示例程序</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun</span>(a, b)
+    error(<span style="color:#e6db74">&#34;错误原因&#34;</span>, <span style="color:#ae81ff">2</span>)
+<span style="color:#66d9ef">end</span>
+
+fun(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</code></pre></div><p><strong>异常信息</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 当 level 为 0 时的错误信息</span>
+/usr/local/bin/lua: 错误原因
+stack traceback:
+	<span style="color:#f92672">[</span>C<span style="color:#f92672">]</span>: in <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;error&#39;</span>
+	...world-example/Lua/src/main/lua/exception/hello_pcall.lua:2: in <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;fun&#39;</span>
+	...world-example/Lua/src/main/lua/exception/hello_pcall.lua:5: in main chunk
+	<span style="color:#f92672">[</span>C<span style="color:#f92672">]</span>: in ?
+
+<span style="color:#75715e"># 当 level 为 1 时的错误信息</span>
+/usr/local/bin/lua: ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:2: 错误原因
+stack traceback:
+	.. 堆栈信息都一样
+
+<span style="color:#75715e"># 当 level 为 2 时的错误信息</span>
+/usr/local/bin/lua: ...world-example/Lua/src/main/lua/exception/hello_pcall.lua:5: 错误原因
+stack traceback:
+	.. 堆栈信息都一样
+
+</code></pre></div><h2 id="pcall-捕获异常">pcall 捕获异常</h2>
+<p><strong>格式</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- 第一个参数是需要调用方法的 方法名，后续参数为 方法的参数列表</span>
+pcall (f [, arg1, <span style="color:#960050;background-color:#1e0010">···</span>])
+</code></pre></div><p><strong>示例代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun</span>(a, b)
+    <span style="color:#66d9ef">if</span> b <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span>
+        error(<span style="color:#e6db74">&#34;错误原因 &#34;</span> <span style="color:#f92672">..</span> a <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;/0&#34;</span>)
+    <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">/</span> b
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 正确时输出： true	1.0</span>
+print(pcall(fun, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+
+<span style="color:#75715e">-- 错误时输出： false	...world-example/Lua/src/main/lua/exception/hello_pcall.lua:3: 错误原因 1/0</span>
+print(pcall(fun, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>))
+</code></pre></div><h2 id="xpcall">xpcall</h2>
+<p><strong>格式</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- 与 pcall 类似，多了一个 msgh 参数，可以用来处理</span>
+xpcall (f, msgh [, arg1, <span style="color:#960050;background-color:#1e0010">···</span>])
+</code></pre></div><p><strong>示例代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun</span>(a, b)
+    <span style="color:#66d9ef">if</span> b <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span>
+        error(<span style="color:#e6db74">&#34;错误原因 &#34;</span> <span style="color:#f92672">..</span> a <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;/0&#34;</span>)
+    <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">/</span> b
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">catch</span>(errorMsg)
+    print(<span style="color:#e6db74">&#34;catch &#34;</span> <span style="color:#f92672">..</span> errorMsg)
+    print(debug.traceback())
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;new&#34;</span> <span style="color:#f92672">..</span> errorMsg
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 正确时输出： true	1.0</span>
+print(xpcall(fun, catch, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+
+<span style="color:#75715e">-- 【catch 方法内打印】</span>
+<span style="color:#75715e">-- catch ...orld-example/Lua/src/main/lua/exception/hello_xpcall.lua:3: 错误原因 1/0</span>
+<span style="color:#75715e">-- stack traceback:</span>
+<span style="color:#75715e">-- 	...orld-example/Lua/src/main/lua/exception/hello_xpcall.lua:10: in function &#39;catch&#39;</span>
+<span style="color:#75715e">-- 	[C]: in function &#39;error&#39;</span>
+<span style="color:#75715e">-- 	...orld-example/Lua/src/main/lua/exception/hello_xpcall.lua:3: in function &#39;fun&#39;</span>
+<span style="color:#75715e">-- 	[C]: in function &#39;xpcall&#39;</span>
+<span style="color:#75715e">-- 	...orld-example/Lua/src/main/lua/exception/hello_xpcall.lua:15: in main chunk</span>
+<span style="color:#75715e">-- 	[C]: in ?</span>
+
+<span style="color:#75715e">-- false	new...orld-example/Lua/src/main/lua/exception/hello_xpcall.lua:3: 错误原因 1/0</span>
+print(xpcall(fun, catch, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>))
+</code></pre></div><h2 id="实现-try-catch-异常捕捉">实现 try-catch 异常捕捉</h2>
+<blockquote>
+<ul>
+<li>
+  <a href="https://tboox.org/cn/2016/12/14/try-catch/">使用lua实现try-catch异常捕获</a></li>
+<li>lua 函数调用语法特性： 在只有一个参数传递的情况下，lua 可以直接传递一个 table 类型，并且省略 <code>()</code></li>
+</ul>
+</blockquote>
+<h3 id="特性示例">特性示例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun</span>(t)
+    <span style="color:#66d9ef">return</span> t.data <span style="color:#f92672">*</span> t.data
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e">-- 调用 fun 方式，参数类型是 table</span>
+<span style="color:#66d9ef">local</span> result <span style="color:#f92672">=</span> fun { data <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> }
+<span style="color:#75715e">-- 输出 9</span>
+print(result)
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#2.3">2.3 – 错误处理</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Action/Exception.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#异常处理">异常处理</a>
+      <ul>
+        <li><a href="#error-抛出异常">error 抛出异常</a></li>
+        <li><a href="#pcall-捕获异常">pcall 捕获异常</a></li>
+        <li><a href="#xpcall">xpcall</a></li>
+        <li><a href="#实现-try-catch-异常捕捉">实现 try-catch 异常捕捉</a>
+          <ul>
+            <li><a href="#特性示例">特性示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
