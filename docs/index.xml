@@ -123,7 +123,8 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/docs/Module/Time/</guid>
-      <description>时间相关 Read More  []()  </description>
+      <description>时间相关 os.date   os.date()
+ -- Mon Sep 21 00:36:54 2020， print(os.date()) local timeTable = os.date(&amp;#34;*t&amp;#34;) for k, v in pairs(timeTable) do print(k, v) end Read More    os.time()  os.difftime()  os.clock()  </description>
     </item>
     
     <item>

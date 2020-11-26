@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="时间相关 Read More  []()  "><meta property="og:title" content="" />
-<meta property="og:description" content="时间相关 Read More  []()  " />
+<meta name="description" content="时间相关 os.date   os.date()
+ -- Mon Sep 21 00:36:54 2020， print(os.date()) local timeTable = os.date(&#34;*t&#34;) for k, v in pairs(timeTable) do print(k, v) end Read More    os.time()  os.difftime()  os.clock()  "><meta property="og:title" content="" />
+<meta property="og:description" content="时间相关 os.date   os.date()
+ -- Mon Sep 21 00:36:54 2020， print(os.date()) local timeTable = os.date(&#34;*t&#34;) for k, v in pairs(timeTable) do print(k, v) end Read More    os.time()  os.difftime()  os.clock()  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Module/Time/" />
-<meta property="article:modified_time" content="2020-08-25T20:52:51+08:00" />
+<meta property="article:modified_time" content="2020-11-26T18:38:04+08:00" />
 <title>Time | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -135,6 +137,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#时间相关">时间相关</a>
       <ul>
+        <li><a href="#osdate">os.date</a></li>
         <li><a href="#read-more">Read More</a></li>
       </ul>
     </li>
@@ -150,9 +153,27 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="时间相关">时间相关</h1>
-<h2 id="read-more">Read More</h2>
+<h2 id="osdate">os.date</h2>
+<blockquote>
+<p>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-os.date">os.date()</a></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Mon Sep 21 00:36:54 2020，</span>
+print(os.date())
+
+<span style="color:#66d9ef">local</span> timeTable <span style="color:#f92672">=</span> os.date(<span style="color:#e6db74">&#34;*t&#34;</span>)
+<span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(timeTable) <span style="color:#66d9ef">do</span>
+    print(k, v)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
 <ul>
-<li>[]()</li>
+<li></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-os.time">os.time()</a></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-os.difftime">os.difftime()</a></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-os.clock">os.clock()</a></li>
 </ul>
 </article>
  
@@ -166,9 +187,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/cb9affdefbc4d2fba18ecfe402d87ed51b1cb55e" title='Last modified by kail | Aug 25, 2020' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/6b9da991c9e31699762f67b556561d2f410ae752" title='Last modified by kaibin.yang | Nov 26, 2020' target="_blank" rel="noopener">
       <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>Aug 25, 2020</span>
+      <span>Nov 26, 2020</span>
     </a>
   </div>
 
@@ -205,6 +226,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#时间相关">时间相关</a>
       <ul>
+        <li><a href="#osdate">os.date</a></li>
         <li><a href="#read-more">Read More</a></li>
       </ul>
     </li>
