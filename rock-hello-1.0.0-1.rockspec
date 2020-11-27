@@ -1,12 +1,13 @@
-package = "kail-hello-rock"
+package = "rock-hello"
 version = "1.0.0-1"
 source = {
   url = "https://github.com/hello-world-example/Lua.git",
-  branch = "rock-kail-hello-1.0.0-SNAPSHOT-1"
+  branch = "rock-hello-1.0.0-1"
 }
 build = {
   type = "builtin",
   modules = {
-    ["hello-rock"] = "src/hello-rock.lua"
+    "hello-rock" = "src/hello.lua"
   }
 }
+
