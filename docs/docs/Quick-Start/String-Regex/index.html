@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%."><meta property="og:title" content="" />
+<meta property="og:description" content="正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Regex/" />
+
+<title>String Regex | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Regex/"class=active>正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+<li>
+  <a href="/Lua/docs/Action/Exception/">异常处理</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
+<li>
+  <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/">LuaSocket 网络工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaFileSystem/">LuaFileSystem 文件工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaCJSON/">LuaCJSON json 格式处理</a></li>
+</ul>
+</li>
+<li><strong>LuaRocks</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaRocks/LuaRocks-Install/">LuaRocks 安装</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Command/">常用命令</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Creating-Rock/">创建一个 Rock</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>String Regex</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#正则查找">正则查找</a>
+      <ul>
+        <li><a href="#pattern">Pattern</a></li>
+        <li><a href="#平衡匹配">平衡匹配</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="正则查找">正则查找</h1>
+<ul>
+<li>替换： <code>str, count = string.gsub(str, pattern, target [,num])</code></li>
+<li>查找：<code>startI, endI = string.find(str, pattern, [init, [end]])</code></li>
+<li>匹配：<code>str = string.match(str, pattern [, start])</code></li>
+<li>匹配：<code>fun = string.gmatch(str, pattern)</code></li>
+</ul>
+<h2 id="pattern">Pattern</h2>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>·</code></td>
+<td>字符</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%a</code>、<code>%A</code></td>
+<td>字母、非字母</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%l</code>、<code>%u</code></td>
+<td>小写字母、大写字母</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%d</code></td>
+<td>数字</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%s</code></td>
+<td>空白</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%w</code></td>
+<td>字符|数字</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%转义</code></td>
+<td>转义</td>
+<td><code>%%</code> 匹配 <code>%</code>，<code>%.</code> 匹配 <code>.</code></td>
+</tr>
+<tr>
+<td align="center"><code>%bxy</code></td>
+<td>平衡匹配</td>
+<td><code>%b()</code>匹配<code>()</code> 内的内容</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code>、<code>[^]</code></td>
+<td>包含|不包含 中括号中的字符</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>*</code></td>
+<td>【数量】0 ~ n</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>+</code></td>
+<td>【数量】1 ~ n</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>-</code></td>
+<td>【数量】0 ~ n，<strong>匹配尽可能短的串</strong></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>?</code></td>
+<td>【数量】0 ~ 1</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%p</code></td>
+<td>标点符号</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>%x</code></td>
+<td>16 进制</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="平衡匹配">平衡匹配</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">html <span style="color:#f92672">=</span> <span style="color:#e6db74">[[
+</span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span><span style="color:#e6db74">&lt;html&gt;
+</span><span style="color:#e6db74">  &lt;head&gt;
+</span><span style="color:#e6db74">    &lt;title&gt;tttt&lt;/title&gt;
+</span><span style="color:#e6db74">  &lt;/head&gt;
+</span><span style="color:#e6db74">  &lt;body&gt;
+</span><span style="color:#e6db74">  &lt;/body&gt;
+</span><span style="color:#e6db74">&lt;html&gt;
+</span><span style="color:#e6db74">]]</span>
+
+<span style="color:#66d9ef">for</span> word <span style="color:#66d9ef">in</span> string.gmatch(html, <span style="color:#e6db74">&#34;%b&lt;&gt;&#34;</span>) <span style="color:#66d9ef">do</span>
+    print(word)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- &gt; 所有的标签</span>
+
+log <span style="color:#f92672">=</span> <span style="color:#e6db74">[[
+</span><span style="color:#e6db74"> 127.0.0.1 - - [07/Jun/2020:00:28:06 +0800] &#34;GET / HTTP/1.1&#34; 200 2277 &#34;http://bbs.sdbeta.com/read-htm-tid-572414.html&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 Edg/83.0.478.45&#34;
+</span><span style="color:#e6db74">]]</span>
+
+<span style="color:#66d9ef">for</span> word <span style="color:#66d9ef">in</span> string.gmatch(log, <span style="color:#e6db74">&#34;%b[]&#34;</span>) <span style="color:#66d9ef">do</span>
+    print(word)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- &gt; [07/Jun/2020:00:28:06 +0800]</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://www.cnblogs.com/meamin9/p/4502461.html">Lua 的字符串匹配与正则表达式</a></li>
+<li>
+  <a href="https://legacy.gitbook.com/book/moonbingbing/openresty-best-practices">OpenResty最佳实践</a> &gt; 
+  <a href="https://moonbingbing.gitbooks.io/openresty-best-practices/content/lua/re.html">正则表达式</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Quick-Start/String-Regex.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#正则查找">正则查找</a>
+      <ul>
+        <li><a href="#pattern">Pattern</a></li>
+        <li><a href="#平衡匹配">平衡匹配</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

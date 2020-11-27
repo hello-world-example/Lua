@@ -23,18 +23,20 @@
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</loc>
-    <lastmod>2020-08-10T00:31:37+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hello-world-example.github.io/Lua/docs/LuaJIT/Quick-Start/</loc>
     <lastmod>2020-08-13T15:25:12+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/Module/</loc>
-    <lastmod>2020-08-10T00:31:37+08:00</lastmod>
+    <loc>https://hello-world-example.github.io/Lua/docs/LuaRocks/Command/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/Lua/docs/LuaRocks/Creating-Rock/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/Lua/docs/LuaRocks/LuaRocks-Install/</loc>
   </url>
   
   <url>
@@ -63,23 +65,23 @@
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/</loc>
-    <lastmod>2020-08-09T17:35:08+08:00</lastmod>
+    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/</loc>
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/String-Function/</loc>
-    <lastmod>2020-08-09T17:35:08+08:00</lastmod>
+    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/Quick-Start/</loc>
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/String-Regex/</loc>
-    <lastmod>2020-08-10T00:31:37+08:00</lastmod>
+    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Function/</loc>
   </url>
   
   <url>
-    <loc>https://hello-world-example.github.io/Lua/docs/Syntax/</loc>
-    <lastmod>2020-08-10T00:31:37+08:00</lastmod>
+    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Regex/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/Lua/docs/Quick-Start/Syntax/</loc>
   </url>
   
   <url>

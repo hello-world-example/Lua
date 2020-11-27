@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TODO  lua中的self https://www.jianshu.com/p/8245b1e7c487  "><meta property="og:title" content="" />
-<meta property="og:description" content="TODO  lua中的self https://www.jianshu.com/p/8245b1e7c487  " />
+<meta name="description" content="LuaRocks 常用命令 luarocks  luarocks help 查看帮助  luarocks help &lt;command&gt; 查看命令帮助      luarocks list 已安装的 rocks  luarocks list --porcelain 每个 rock 放在一行显示，便于 grep 等命令处理 如： luarocks list --porcelain | grep kong-plugin      luarocks show &lt;rock&gt; 查看 rock 信息  luarocks show lua-cjson --deps 查看依赖 luarocks show lua-cjson --rock-tree 安装路径      luarocks path Lua path 和 cpath    luarocks search &lt;rock&gt; 搜索 luarocks install &lt;rock&gt; 安装 luarocks remove &lt;rock&gt; 卸载      Read More  ❤ luarocks ❤  luarocks-admin  "><meta property="og:title" content="" />
+<meta property="og:description" content="LuaRocks 常用命令 luarocks  luarocks help 查看帮助  luarocks help &lt;command&gt; 查看命令帮助      luarocks list 已安装的 rocks  luarocks list --porcelain 每个 rock 放在一行显示，便于 grep 等命令处理 如： luarocks list --porcelain | grep kong-plugin      luarocks show &lt;rock&gt; 查看 rock 信息  luarocks show lua-cjson --deps 查看依赖 luarocks show lua-cjson --rock-tree 安装路径      luarocks path Lua path 和 cpath    luarocks search &lt;rock&gt; 搜索 luarocks install &lt;rock&gt; 安装 luarocks remove &lt;rock&gt; 卸载      Read More  ❤ luarocks ❤  luarocks-admin  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hello-world-example.github.io/Lua/TODO/" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/LuaRocks/Command/" />
 
-<title>T O D O | Lua</title>
+<title>Command | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
 
@@ -86,7 +86,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/Lua/docs/LuaRocks/LuaRocks-Install/">LuaRocks 安装</a></li>
 <li>
-  <a href="/Lua/docs/LuaRocks/Command/">常用命令</a></li>
+  <a href="/Lua/docs/LuaRocks/Command/"class=active>常用命令</a></li>
 <li>
   <a href="/Lua/docs/LuaRocks/Creating-Rock/">创建一个 Rock</a></li>
 </ul>
@@ -127,7 +127,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>T O D O</strong>
+  <strong>Command</strong>
 
   <label for="toc-control">
     <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -141,7 +141,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#todo">TODO</a></li>
+    <li><a href="#luarocks-常用命令">LuaRocks 常用命令</a>
+      <ul>
+        <li><a href="#luarocks">luarocks</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -153,9 +158,53 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="todo">TODO</h1>
+  <article class="markdown"><h1 id="luarocks-常用命令">LuaRocks 常用命令</h1>
+<h2 id="luarocks">luarocks</h2>
 <ul>
-<li>lua中的self <a href="https://www.jianshu.com/p/8245b1e7c487">https://www.jianshu.com/p/8245b1e7c487</a></li>
+<li><code>luarocks help</code> 查看帮助
+<ul>
+<li><code>luarocks help &lt;command&gt;</code>  查看命令帮助</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>luarocks list</code> 已安装的 rocks
+<ul>
+<li><code>luarocks list --porcelain</code> 每个 rock 放在一行显示，便于 <code>grep</code> 等命令处理</li>
+<li>如： <code>luarocks list --porcelain | grep kong-plugin</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>luarocks show &lt;rock&gt;</code> 查看 rock 信息
+<ul>
+<li><code>luarocks show lua-cjson --deps</code> 查看依赖</li>
+<li><code>luarocks show lua-cjson --rock-tree</code> 安装路径</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>luarocks path</code> Lua path 和 cpath</li>
+</ul>
+<hr>
+<ul>
+<li><code>luarocks search &lt;rock&gt;</code> 搜索</li>
+<li><code>luarocks install &lt;rock&gt;</code> 安装</li>
+<li><code>luarocks remove &lt;rock&gt;</code> 卸载</li>
+</ul>
+<hr>
+<ul>
+<li></li>
+</ul>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>❤ 
+  <a href="https://github.com/luarocks/luarocks/wiki/luarocks">luarocks</a> ❤</li>
+<li>
+  <a href="https://github.com/luarocks/luarocks/wiki/luarocks-admin">luarocks-admin</a></li>
 </ul>
 </article>
  
@@ -167,18 +216,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/5ef515a75ec49c18d720bccbb3f840203304b889" title='Last modified by kaibin.yang | Aug 18, 2020' target="_blank" rel="noopener">
-      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>Aug 18, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/TODO.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/LuaRocks/Command.md" target="_blank" rel="noopener">
       <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -206,7 +247,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#todo">TODO</a></li>
+    <li><a href="#luarocks-常用命令">LuaRocks 常用命令</a>
+      <ul>
+        <li><a href="#luarocks">luarocks</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

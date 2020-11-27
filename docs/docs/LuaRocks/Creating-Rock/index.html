@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="创建一个 Rock 初始化 rock $ mkdir rock-hello $ cd rock-hello # 创建 rockspec 文件模板 $ luarocks write_rockspec # 成功后会在当前文件夹下生成 rock-hello-dev-1.rockspec 文件 $ cat rock-hello-dev-1.rockspec *.rockspec 文件    Rockspec format 详细文件格式   -- {package}-{version}.rockspec 与文件名保持一致 package = &#34;rock-hello&#34; -- ❤❤❤ 版本号要以 -x 结尾，如0.0.1-1，1.3-1，如果你不按照这种规则定义则会报错！ version = &#34;dev-1&#34; -- ❤❤❤ luarocks 仓库托管的只有 *.rockspec 这个文件 -- ❤❤❤ source 需要执行可以下载的地址 source = { -- 源码位置，如： github 地址 url = &#34;*** please add URL for source tarball, zip or repository here ***&#34; } description = { -- 项目文档地址，如 github 的 page homepage = &#34;*** please enter a project homepage ***&#34;, summary = &#34;简介&#34;, detailed = [[ 详细描述 ]], -- 开源协议，如： MIT license = &#34;*** please specify a license ***&#34; } dependencies = { &#34;lua &gt;= 5."><meta property="og:title" content="" />
+<meta property="og:description" content="创建一个 Rock 初始化 rock $ mkdir rock-hello $ cd rock-hello # 创建 rockspec 文件模板 $ luarocks write_rockspec # 成功后会在当前文件夹下生成 rock-hello-dev-1.rockspec 文件 $ cat rock-hello-dev-1.rockspec *.rockspec 文件    Rockspec format 详细文件格式   -- {package}-{version}.rockspec 与文件名保持一致 package = &#34;rock-hello&#34; -- ❤❤❤ 版本号要以 -x 结尾，如0.0.1-1，1.3-1，如果你不按照这种规则定义则会报错！ version = &#34;dev-1&#34; -- ❤❤❤ luarocks 仓库托管的只有 *.rockspec 这个文件 -- ❤❤❤ source 需要执行可以下载的地址 source = { -- 源码位置，如： github 地址 url = &#34;*** please add URL for source tarball, zip or repository here ***&#34; } description = { -- 项目文档地址，如 github 的 page homepage = &#34;*** please enter a project homepage ***&#34;, summary = &#34;简介&#34;, detailed = [[ 详细描述 ]], -- 开源协议，如： MIT license = &#34;*** please specify a license ***&#34; } dependencies = { &#34;lua &gt;= 5." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/LuaRocks/Creating-Rock/" />
+
+<title>Creating Rock | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+<li>
+  <a href="/Lua/docs/Action/Exception/">异常处理</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
+<li>
+  <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/">LuaSocket 网络工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaFileSystem/">LuaFileSystem 文件工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaCJSON/">LuaCJSON json 格式处理</a></li>
+</ul>
+</li>
+<li><strong>LuaRocks</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaRocks/LuaRocks-Install/">LuaRocks 安装</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Command/">常用命令</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Creating-Rock/"class=active>创建一个 Rock</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Creating Rock</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建一个-rock">创建一个 Rock</a>
+      <ul>
+        <li><a href="#初始化-rock">初始化 rock</a></li>
+        <li><a href="#rockspec-文件">*.rockspec 文件</a></li>
+        <li><a href="#创建一个模块">创建一个模块</a></li>
+        <li><a href="#托管到-github">托管到 Github</a></li>
+        <li><a href="#上传到-luarocksorg">上传到 luarocks.org</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="创建一个-rock">创建一个 Rock</h1>
+<h2 id="初始化-rock">初始化 rock</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir rock-hello
+
+$ cd rock-hello
+
+<span style="color:#75715e"># 创建 rockspec 文件模板</span>
+$ luarocks write_rockspec
+
+<span style="color:#75715e"># 成功后会在当前文件夹下生成 rock-hello-dev-1.rockspec 文件</span>
+$ cat rock-hello-dev-1.rockspec
+</code></pre></div><h2 id="rockspec-文件">*.rockspec 文件</h2>
+<blockquote>
+<ul>
+<li>
+  <a href="https://github.com/luarocks/luarocks/wiki/Rockspec-format">Rockspec format</a> 详细文件格式</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- {package}-{version}.rockspec 与文件名保持一致</span>
+package <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rock-hello&#34;</span>
+<span style="color:#75715e">-- ❤❤❤ 版本号要以 -x 结尾，如0.0.1-1，1.3-1，如果你不按照这种规则定义则会报错！</span>
+version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dev-1&#34;</span>
+<span style="color:#75715e">-- ❤❤❤ luarocks 仓库托管的只有 *.rockspec 这个文件</span>
+<span style="color:#75715e">-- ❤❤❤ source 需要执行可以下载的地址</span>
+source <span style="color:#f92672">=</span> {
+  <span style="color:#75715e">-- 源码位置，如： github 地址</span>
+  url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;*** please add URL for source tarball, zip or repository here ***&#34;</span>
+}
+description <span style="color:#f92672">=</span> {
+  <span style="color:#75715e">-- 项目文档地址，如 github 的 page</span>
+  homepage <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;*** please enter a project homepage ***&#34;</span>,
+  summary <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;简介&#34;</span>,
+  detailed <span style="color:#f92672">=</span> <span style="color:#e6db74">[[
+</span><span style="color:#e6db74">  详细描述
+</span><span style="color:#e6db74">  ]]</span>,
+  <span style="color:#75715e">-- 开源协议，如： MIT</span>
+  license <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;*** please specify a license ***&#34;</span>
+}
+dependencies <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;lua &gt;= 5.1, &lt; 5.4&#34;</span>,
+  <span style="color:#e6db74">&#34;luaknife &gt;= 2.3&#34;</span>
+  <span style="color:#75715e">-- 其他依赖</span>
+}
+build <span style="color:#f92672">=</span> {
+  <span style="color:#75715e">-- 编译方式</span>
+  type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;builtin&#34;</span>,
+  <span style="color:#75715e">-- 包含的模块</span>
+  modules <span style="color:#f92672">=</span> {}
+}
+</code></pre></div><h2 id="创建一个模块">创建一个模块</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd rock-hello
+
+$ vim src/hello.lua
+</code></pre></div><p><code>src/hello.lua</code> 内容如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">module <span style="color:#f92672">=</span> {}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">sayHello</span>()
+    print(<span style="color:#e6db74">&#34;Hello World&#34;</span>)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">say</span>(some)
+    print(some)
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">return</span> module
+</code></pre></div><p>修改 <code>rock-hello-dev-1.rockspec</code> 文件，内容如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">package <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rock-hello&#34;</span>
+version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1.0.0-1&#34;</span>
+source <span style="color:#f92672">=</span> {
+  <span style="color:#75715e">-- 注意文件地址：https://github.com/hello-world-example/Lua.git， https-&gt;git, 去掉 .git 后缀 </span>
+  url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;git://github.com/hello-world-example/Lua&#34;</span>,
+  tag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v.rock-hello-1.0.0-1&#34;</span>,
+  branch <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rock-hello-1.0.0-1&#34;</span>
+}
+build <span style="color:#f92672">=</span> {
+  type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;builtin&#34;</span>,
+  modules <span style="color:#f92672">=</span> {
+    [<span style="color:#e6db74">&#34;hello-rock&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;src/hello.lua&#34;</span>
+  }
+}
+</code></pre></div><p>重命名 <code>rock-hello-dev-1.rockspec</code> 文件 为 <code>rock-hello-1.0.0-1.rockspec</code> 与文件内容保持一致</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mv kail-hello-rock-1.0.0-1.rockspec rock-hello-1.0.0-1.rockspec
+
+<span style="color:#75715e"># 使用本地安装</span>
+$ sudo luarocks make
+</code></pre></div><h2 id="托管到-github">托管到 Github</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd rock-hello
+
+$ git init
+
+$ git remote add origin https://github.com/hello-world-example/Lua.git
+
+<span style="color:#75715e"># 创建一个空分支</span>
+$ git checkout --orphan rock-hello-1.0.0-1
+
+<span style="color:#75715e"># 提交文件</span>
+$ git add .
+$ git commit -am init
+$ git push --set-upstream origin rock-hello-1.0.0-1
+
+$ git tag v.rock-hello-1.0.0-1
+$ git push --tags
+
+<span style="color:#75715e"># 删除 tag</span>
+<span style="color:#75715e"># $ git tag -d v.rock-hello-1.0.0-1</span>
+<span style="color:#75715e"># $ git push origin :refs/tags/v.rock-hello-1.0.0-1</span>
+</code></pre></div><h2 id="上传到-luarocksorg">上传到 luarocks.org</h2>
+<ul>
+<li>先在 <a href="https://luarocks.org/register">https://luarocks.org/register</a> 注册账户</li>
+<li>登陆后在 <a href="https://luarocks.org/settings/api-keys">https://luarocks.org/settings/api-keys</a> 生成 <code>api-key</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 删除生成的文件</span>
+$ rm *.rock
+
+# 
+$ luarocks upload rock-hello-1.0.0-1.rockspec --api-key<span style="color:#f92672">=</span>&lt;Your Key&gt;
+
+<span style="color:#75715e"># 安装</span>
+$ sudo luarocks install rock-hello
+<span style="color:#75715e"># 卸载</span>
+<span style="color:#75715e"># $ sudo luarocks remove rock-hello</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://github.com/luarocks/luarocks/wiki/Creating-a-rock">Creating a rock</a></li>
+<li>
+  <a href="https://segmentfault.com/a/1190000017176952">教你使用 luarocks 来创建 rock 包</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/LuaRocks/Creating-Rock.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建一个-rock">创建一个 Rock</a>
+      <ul>
+        <li><a href="#初始化-rock">初始化 rock</a></li>
+        <li><a href="#rockspec-文件">*.rockspec 文件</a></li>
+        <li><a href="#创建一个模块">创建一个模块</a></li>
+        <li><a href="#托管到-github">托管到 Github</a></li>
+        <li><a href="#上传到-luarocksorg">上传到 luarocks.org</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

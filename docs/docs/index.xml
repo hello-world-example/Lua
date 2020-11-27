@@ -40,16 +40,6 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Lua/docs/Action/LuaRocks/</guid>
-      <description>LuaRocks  LuaRocks is the package manager for Lua modules.
- 安装 $ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz $ tar zxvf luarocks-3.3.1.tar.gz $ cd luarocks-3.3.1 # ./configure -h $ ./configure --prefix=/usr/local/luarocks --rocks-tree=/usr/local # $ sudo make bootstrap $ make $ sudo make install # $ /usr/local/luarocks/bin/luarocks config ... # 创建链接 $ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks $ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin    luarocks - The LuaRocks command-line interface.  luarocks-admin - The repository management tool.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://hello-world-example.github.io/Lua/docs/LuaJIT/Quick-Start/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -59,11 +49,30 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/Module/</link>
+      <link>https://hello-world-example.github.io/Lua/docs/LuaRocks/Command/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Lua/docs/Module/</guid>
-      <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
+      <guid>https://hello-world-example.github.io/Lua/docs/LuaRocks/Command/</guid>
+      <description>LuaRocks 常用命令 luarocks  luarocks help 查看帮助  luarocks help &amp;lt;command&amp;gt; 查看命令帮助      luarocks list 已安装的 rocks  luarocks list --porcelain 每个 rock 放在一行显示，便于 grep 等命令处理 如： luarocks list --porcelain | grep kong-plugin      luarocks show &amp;lt;rock&amp;gt; 查看 rock 信息  luarocks show lua-cjson --deps 查看依赖 luarocks show lua-cjson --rock-tree 安装路径      luarocks path Lua path 和 cpath    luarocks search &amp;lt;rock&amp;gt; 搜索 luarocks install &amp;lt;rock&amp;gt; 安装 luarocks remove &amp;lt;rock&amp;gt; 卸载      Read More  ❤ luarocks ❤  luarocks-admin  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/LuaRocks/Creating-Rock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/LuaRocks/Creating-Rock/</guid>
+      <description>创建一个 Rock 初始化 rock $ mkdir rock-hello $ cd rock-hello # 创建 rockspec 文件模板 $ luarocks write_rockspec # 成功后会在当前文件夹下生成 rock-hello-dev-1.rockspec 文件 $ cat rock-hello-dev-1.rockspec *.rockspec 文件    Rockspec format 详细文件格式   -- {package}-{version}.rockspec 与文件名保持一致 package = &amp;#34;rock-hello&amp;#34; -- ❤❤❤ 版本号要以 -x 结尾，如0.0.1-1，1.3-1，如果你不按照这种规则定义则会报错！ version = &amp;#34;dev-1&amp;#34; -- ❤❤❤ luarocks 仓库托管的只有 *.rockspec 这个文件 -- ❤❤❤ source 需要执行可以下载的地址 source = { -- 源码位置，如： github 地址 url = &amp;#34;*** please add URL for source tarball, zip or repository here ***&amp;#34; } description = { -- 项目文档地址，如 github 的 page homepage = &amp;#34;*** please enter a project homepage ***&amp;#34;, summary = &amp;#34;简介&amp;#34;, detailed = [[ 详细描述 ]], -- 开源协议，如： MIT license = &amp;#34;*** please specify a license ***&amp;#34; } dependencies = { &amp;#34;lua &amp;gt;= 5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/LuaRocks/LuaRocks-Install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/LuaRocks/LuaRocks-Install/</guid>
+      <description>LuaRocks  LuaRocks is the package manager for Lua modules.
+ 安装 $ wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz $ tar zxvf luarocks-3.3.1.tar.gz $ cd luarocks-3.3.1 # ./configure -h $ ./configure --prefix=/usr/local/luarocks --rocks-tree=/usr/local # $ sudo make bootstrap $ make $ sudo make install # $ /usr/local/luarocks/bin/luarocks config ... # 创建链接 $ ln -s /usr/local/luarocks/bin/luarocks /usr/local/bin/luarocks $ ln -s /usr/local/luarocks/bin/luarocks-admin /usr/local/bin/luarocks-admin    luarocks - The LuaRocks command-line interface.  luarocks-admin - The repository management tool.</description>
     </item>
     
     <item>
@@ -120,38 +129,47 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/</link>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/</guid>
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/</guid>
+      <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Quick-Start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Quick-Start/</guid>
       <description>快速开始 安装 如果是在 Linux 或 Mac 下，Lua 大部分情况下已经安装
 # 查看版本 $ lua -v Lua 5.2.4 Copyright (C) 1994-2015 Lua.org, PUC-Rio # 卸载原来安装的版本 $ which lua /usr/local/bin/lua # 发现是通过 brew 安装的 $ ll /usr/local/bin/lua /usr/local/bin/lua -&amp;gt; ../Cellar/lua/5.2.4_4/bin/lua # 卸载 $ brew uninstall lua 编译安装 # 下载解压 $ curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz $ tar zxvf lua-5.3.5.tar.gz $ cd lua-5.3.5 # 查看文档 $ open doc/contents.html # 编译 $ make Please do &amp;#39;make PLATFORM&amp;#39; where PLATFORM is one of these: aix bsd c89 freebsd generic linux macosx mingw posix solaris See doc/readme.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/String-Function/</link>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Lua/docs/String-Function/</guid>
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Function/</guid>
       <description>string function    function 概述     .. 字符串拼接   string.upper(argument) 转大写   string.lower(argument) 转小写   string.format(...) 格式化，string.format(&amp;quot;the %s is : %d&amp;quot;, &amp;quot;value&amp;quot;, 4)   string.rep(string, n) 字符串 repeat，string.rep(&amp;quot;abc&amp;quot;, 2) --&amp;gt; abcabc   string.gsub(str,pattern,target[,num]) 替换，str, count = string.gsub(&amp;quot;燕燕燕&amp;quot;, &amp;quot;燕&amp;quot;, &amp;quot;子&amp;quot;)   string.find(str, pattern, [init, [end]]) 字符串查找，startI, endI = string.find(&amp;quot;大闹天宫&amp;quot;, &amp;quot;闹天&amp;quot;)，未找到返回 nil   string.len(arg) 【不支持中文】英文字符串长度，建议通过 utf8.len(arg) 代替   string.reverse(arg) 【不支持中文】反转   string.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/String-Regex/</link>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Regex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Lua/docs/String-Regex/</guid>
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/String-Regex/</guid>
       <description>正则查找  替换： str, count = string.gsub(str, pattern, target [,num]) 查找：startI, endI = string.find(str, pattern, [init, [end]]) 匹配：str = string.match(str, pattern [, start]) 匹配：fun = string.gmatch(str, pattern)  Pattern    符号       · 字符    %a、%A 字母、非字母    %l、%u 小写字母、大写字母    %d 数字    %s 空白    %w 字符|数字    %转义 转义 %% 匹配 %，%.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Lua/docs/Syntax/</link>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Syntax/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Lua/docs/Syntax/</guid>
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Syntax/</guid>
       <description>基础语法 注释 -- 单行注释 --- 单行注释（IDEA 中会自动生成注释） --[[ 多行注释 --]] 变量 -- 全局变量 var = 10 print(var) -- 删除变量 var = nil print(var) -- 局部变量 local b = 5 do local a = 6 -- 局部变量 var = 6 -- 全局变量 print(a, var); -- 6 6 end -- 变量赋值 a, b = 10, 2 * x 类型 print(type(nil)) --&amp;gt; nil print(type(true)) --&amp;gt; boolean print(type(10.4 * 3)) --&amp;gt; number print(type(&amp;#39;Hello world&amp;#39;)) --&amp;gt; string print(type(&amp;#34;Hello world&amp;#34;)) --&amp;gt; string print(type(type(X))) --&amp;gt; string print(type(print)) --&amp;gt; function print(type(type)) --&amp;gt; function print(type({ k1=v1, k2=v2 })) --&amp;gt; table -- userdata	表示任意存储在变量中的C数据结构 -- thread	表示执行的独立线路，用于执行协同程序 字符串 s1 = &amp;#34;this is string1&amp;#34; s2 = &amp;#39;this is string2&amp;#39; s3 = [[这是 多行字符串 ]] -- 字符串拼接 print(&amp;#34;a&amp;#34; .</description>
     </item>
     

@@ -50,6 +50,9 @@ Rocks installed for Lua 5.3
 luautf8
    0.1.3-1 (installed) - /opt/package/luarocks-3.3.1/./lua_modules/lib/luarocks/rocks-5.3
 
+# 查看信息
+$ luarocks show luautf8
+
 # lua-utf8.so
 $ ll /usr/local/lib/lua/5.3/
 
