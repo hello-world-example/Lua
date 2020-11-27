@@ -1,8 +1,10 @@
+
 package = "rock-hello"
 version = "1.0.0-1"
 source = {
-  url = "git://github.com/hello-world-example/Lua",
-  tag = "v.rock-hello-1.0.0-1"
+  url = "git://github.com/hello-world-example/Lua.git",
+  tag = "v.rock-hello-1.0.0-1",
+  branch = "rock-hello-1.0.0-1"
 }
 build = {
   type = "builtin",
