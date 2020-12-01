@@ -8,7 +8,7 @@
 <meta property="og:description" content="Metatable  Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。 元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法 setmetatable 时 metatable 中不能存在 __metatable 键  元表示例 -- metatable local my_parent_metatable = { name = &#34;new&#34;, nick = &#34;kailbin&#34;, getAge = function() return 28 end } -- 原始 table local my_table = { name = &#34;kai&#34;, } -- 给 my_table 增减 元表 setmetatable(my_table, my_parent_metatable) -- 获取 元表 local parent = getmetatable(my_table) -- 打印元表信息 print(parent.name) print(parent.nick) print(parent." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/" />
-
+<meta property="article:modified_time" content="2020-12-01T14:10:51+08:00" />
 <title>Metatable | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -59,6 +59,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
 <li>
   <a href="/Lua/docs/Quick-Start/Metatable/"class=active>Metatable 元表</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/OOP/">OOP</a></li>
 <li><strong>Action</strong>
 <ul>
 <li>
@@ -437,6 +439,14 @@ print(my_table) <span style="color:#75715e">-- {name=kai, nick=kailbin, }</span>
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/e4eba702cdfd294bc7a91a49fd2b05e2bf28f13c" title='Last modified by kaibin.yang | Dec 1, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Dec 1, 2020</span>
+    </a>
+  </div>
 
 
 

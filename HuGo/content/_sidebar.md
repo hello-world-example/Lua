@@ -8,6 +8,7 @@ headless: true
 - [正则匹配]({{< relref "/docs/Quick-Start/String-Regex.md" >}})
 - [Module]({{< relref "/docs/Quick-Start/Module.md" >}})
 - [Metatable 元表]({{< relref "/docs/Quick-Start/Metatable.md" >}})
+- [OOP]({{< relref "/docs/Quick-Start/OOP.md" >}})
 - **Action**
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})

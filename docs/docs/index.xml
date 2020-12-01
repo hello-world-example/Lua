@@ -147,6 +147,15 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
     
     <item>
       <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/OOP/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/OOP/</guid>
+      <description>OOP 面向对象 self  Lua 定义/调用 function 时，可以使用 . 或 :  . 类似于 Java 中的 static 静态方法 : 定义或调用时，则隐含一个 self 的概念  定义方法： 在方法体内可以使用 self 引用当前 table 调用方法： 第一个参数会默认传递 self 即当前 table      shape = { height = 4, width = 4 } setmetatable(shape, { __tostring = function(my) return &amp;#34;height:&amp;#34; .. my.height .. &amp;#34;,width:&amp;#34; .. my.width end }) function shape.setWidth(shape, width) shape.width = width end function shape:setHeight(height) self.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Quick-Start/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OOP 面向对象 self  Lua 定义/调用 function 时，可以使用 . 或 :  . 类似于 Java 中的 static 静态方法 : 定义或调用时，则隐含一个 self 的概念  定义方法： 在方法体内可以使用 self 引用当前 table 调用方法： 第一个参数会默认传递 self 即当前 table      shape = { height = 4, width = 4 } setmetatable(shape, { __tostring = function(my) return &#34;height:&#34; .. my.height .. &#34;,width:&#34; .. my.width end }) function shape.setWidth(shape, width) shape.width = width end function shape:setHeight(height) self."><meta property="og:title" content="" />
+<meta property="og:description" content="OOP 面向对象 self  Lua 定义/调用 function 时，可以使用 . 或 :  . 类似于 Java 中的 static 静态方法 : 定义或调用时，则隐含一个 self 的概念  定义方法： 在方法体内可以使用 self 引用当前 table 调用方法： 第一个参数会默认传递 self 即当前 table      shape = { height = 4, width = 4 } setmetatable(shape, { __tostring = function(my) return &#34;height:&#34; .. my.height .. &#34;,width:&#34; .. my.width end }) function shape.setWidth(shape, width) shape.width = width end function shape:setHeight(height) self." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/OOP/" />
+
+<title>O O P | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Metatable/">Metatable 元表</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/OOP/"class=active>OOP</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+<li>
+  <a href="/Lua/docs/Action/Exception/">异常处理 (pcall/xpcall)</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
+<li>
+  <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/">LuaSocket 网络工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaFileSystem/">LuaFileSystem 文件工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaCJSON/">LuaCJSON json 格式处理</a></li>
+</ul>
+</li>
+<li><strong>LuaRocks</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaRocks/LuaRocks-Install/">LuaRocks 安装</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Command/">常用命令</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Creating-Rock/">创建一个 Rock</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>O O P</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#oop-面向对象">OOP 面向对象</a>
+      <ul>
+        <li><a href="#self">self</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="oop-面向对象">OOP 面向对象</h1>
+<h2 id="self">self</h2>
+<ul>
+<li>Lua 定义/调用 function 时，可以使用 <code>.</code> 或 <code>:</code>
+<ul>
+<li><code>.</code> 类似于 Java 中的 static 静态方法</li>
+<li><code>:</code> 定义或调用时，则隐含一个 <code>self</code> 的概念
+<ul>
+<li>定义方法： 在方法体内可以使用 <code>self</code> 引用当前 <code>table</code></li>
+<li>调用方法： 第一个参数会默认传递  <code>self</code> 即当前 <code>table</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">shape <span style="color:#f92672">=</span> { height <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, width <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> }
+setmetatable(shape, { __tostring <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(my)
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;height:&#34;</span> <span style="color:#f92672">..</span> my.height <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;,width:&#34;</span> <span style="color:#f92672">..</span> my.width
+<span style="color:#66d9ef">end</span> })
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shape</span>.<span style="color:#a6e22e">setWidth</span>(shape, width)
+    shape.width <span style="color:#f92672">=</span> width
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shape</span>:<span style="color:#a6e22e">setHeight</span>(height)
+    self.height <span style="color:#f92672">=</span> height
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 传入自己</span>
+shape.setHeight(shape, <span style="color:#ae81ff">40</span>)
+<span style="color:#75715e">-- 【.方式 调用 :方法】传入自己</span>
+shape.setWidth(shape, <span style="color:#ae81ff">40</span>)
+<span style="color:#75715e">-- height:40,width:40</span>
+print(shape)
+
+<span style="color:#75715e">-- 【:方式 调用 .方法】无需传入自己</span>
+shape:setHeight(<span style="color:#ae81ff">60</span>)
+<span style="color:#75715e">-- 无需传入自己</span>
+shape:setWidth(<span style="color:#ae81ff">60</span>)
+<span style="color:#75715e">-- height:60,width:60</span>
+print(shape)
+
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+<p>❤ Github 
+  <a href="https://github.com/rxi/classic">rxi/classic</a></p>
+</li>
+<li>
+<p>LuaRocks 
+  <a href="https://luarocks.org/modules/emartech/classic">emartech/classic</a></p>
+</li>
+<li>
+<p>
+  <a href="https://github.com/Kong/kong/blob/2.1.4/kong/plugins/base_plugin.lua">kong/plugins/base_plugin.lua</a></p>
+</li>
+<li></li>
+<li>
+<p>
+  <a href="https://www.jianshu.com/p/8245b1e7c487">lua 中的 self</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.runoob.com/lua/lua-object-oriented.html">Lua 面向对象</a></p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Quick-Start/OOP.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#oop-面向对象">OOP 面向对象</a>
+      <ul>
+        <li><a href="#self">self</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  Module  Metatable 元表 Action   LuaCheck 静态检查  中文处理  异常处理 (pcall/xpcall)   Module   时间相关  I/O 模块  LuaSocket 网络工具  LuaFileSystem 文件工具  LuaCJSON json 格式处理   LuaRocks   LuaRocks 安装  常用命令  创建一个 Rock   LuaJIT   快速开始    </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module  Metatable 元表  OOP Action   LuaCheck 静态检查  中文处理  异常处理 (pcall/xpcall)   Module   时间相关  I/O 模块  LuaSocket 网络工具  LuaFileSystem 文件工具  LuaCJSON json 格式处理   LuaRocks   LuaRocks 安装  常用命令  创建一个 Rock   LuaJIT   快速开始    </description>
     </item>
     
     <item>
@@ -152,6 +152,15 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
       
       <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/</guid>
       <description>模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &amp;#34;这是一个常量&amp;#34; -- 定义一个函数 function module.func1() io.write(&amp;#34;这是一个公有函数！\n&amp;#34;) end local function func2() print(&amp;#34;这是一个私有函数！&amp;#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &amp;#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&amp;#34; -- print(package.path) -- 加载模块 local module = require(&amp;#34;module&amp;#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/OOP/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/OOP/</guid>
+      <description>OOP 面向对象 self  Lua 定义/调用 function 时，可以使用 . 或 :  . 类似于 Java 中的 static 静态方法 : 定义或调用时，则隐含一个 self 的概念  定义方法： 在方法体内可以使用 self 引用当前 table 调用方法： 第一个参数会默认传递 self 即当前 table      shape = { height = 4, width = 4 } setmetatable(shape, { __tostring = function(my) return &amp;#34;height:&amp;#34; .. my.height .. &amp;#34;,width:&amp;#34; .. my.width end }) function shape.setWidth(shape, width) shape.width = width end function shape:setHeight(height) self.</description>
     </item>
     
     <item>
