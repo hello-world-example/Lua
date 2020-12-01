@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hello-world-example.github.io/Lua/_sidebar/</guid>
-      <description>  快速开始  语法结构  string  正则匹配  Module Action   LuaCheck 静态检查  中文处理  异常处理   Module   时间相关  I/O 模块  LuaSocket 网络工具  LuaFileSystem 文件工具  LuaCJSON json 格式处理   LuaRocks   LuaRocks 安装  常用命令  创建一个 Rock   LuaJIT   快速开始    </description>
+      <description>  快速开始  语法结构  string  正则匹配  Module  Metatable 元表 Action   LuaCheck 静态检查  中文处理  异常处理 (pcall/xpcall)   Module   时间相关  I/O 模块  LuaSocket 网络工具  LuaFileSystem 文件工具  LuaCJSON json 格式处理   LuaRocks   LuaRocks 安装  常用命令  创建一个 Rock   LuaJIT   快速开始    </description>
     </item>
     
     <item>
@@ -134,6 +134,15 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
       <guid>https://hello-world-example.github.io/Lua/docs/Module/Time/</guid>
       <description>时间相关 os.date   os.date()
  -- Mon Sep 21 00:36:54 2020， print(os.date()) local timeTable = os.date(&amp;#34;*t&amp;#34;) for k, v in pairs(timeTable) do print(k, v) end Read More    os.time()  os.difftime()  os.clock()  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/</guid>
+      <description>Metatable  Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。 元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法 setmetatable 时 metatable 中不能存在 __metatable 键  元表示例 -- metatable local my_parent_metatable = { name = &amp;#34;new&amp;#34;, nick = &amp;#34;kailbin&amp;#34;, getAge = function() return 28 end } -- 原始 table local my_table = { name = &amp;#34;kai&amp;#34;, } -- 给 my_table 增减 元表 setmetatable(my_table, my_parent_metatable) -- 获取 元表 local parent = getmetatable(my_table) -- 打印元表信息 print(parent.name) print(parent.nick) print(parent.</description>
     </item>
     
     <item>

@@ -10,7 +10,7 @@
 # 查看版本 $ lua -v Lua 5.2.4 Copyright (C) 1994-2015 Lua.org, PUC-Rio # 卸载原来安装的版本 $ which lua /usr/local/bin/lua # 发现是通过 brew 安装的 $ ll /usr/local/bin/lua /usr/local/bin/lua -&gt; ../Cellar/lua/5.2.4_4/bin/lua # 卸载 $ brew uninstall lua 编译安装 # 下载解压 $ curl -R -O http://www.lua.org/ftp/lua-5.3.5.tar.gz $ tar zxvf lua-5.3.5.tar.gz $ cd lua-5.3.5 # 查看文档 $ open doc/contents.html # 编译 $ make Please do &#39;make PLATFORM&#39; where PLATFORM is one of these: aix bsd c89 freebsd generic linux macosx mingw posix solaris See doc/readme." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/Quick-Start/" />
-
+<meta property="article:modified_time" content="2020-11-27T15:58:46+08:00" />
 <title>Quick Start | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -59,6 +59,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
 <li>
   <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Metatable/">Metatable 元表</a></li>
 <li><strong>Action</strong>
 <ul>
 <li>
@@ -66,7 +68,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
 <li>
-  <a href="/Lua/docs/Action/Exception/">异常处理</a></li>
+  <a href="/Lua/docs/Action/Exception/">异常处理 (pcall/xpcall)</a></li>
 </ul>
 </li>
 <li><strong>Module</strong>
@@ -253,6 +255,14 @@ Hello World
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/bb9a52b3ecb563c34dea05b78c21be6597785b44" title='Last modified by kaibin.yang | Nov 27, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Nov 27, 2020</span>
+    </a>
+  </div>
 
 
 

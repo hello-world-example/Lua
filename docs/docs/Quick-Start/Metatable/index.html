@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Metatable  Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。 元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法 setmetatable 时 metatable 中不能存在 __metatable 键  元表示例 -- metatable local my_parent_metatable = { name = &#34;new&#34;, nick = &#34;kailbin&#34;, getAge = function() return 28 end } -- 原始 table local my_table = { name = &#34;kai&#34;, } -- 给 my_table 增减 元表 setmetatable(my_table, my_parent_metatable) -- 获取 元表 local parent = getmetatable(my_table) -- 打印元表信息 print(parent.name) print(parent.nick) print(parent."><meta property="og:title" content="" />
+<meta property="og:description" content="Metatable  Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。 元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法 setmetatable 时 metatable 中不能存在 __metatable 键  元表示例 -- metatable local my_parent_metatable = { name = &#34;new&#34;, nick = &#34;kailbin&#34;, getAge = function() return 28 end } -- 原始 table local my_table = { name = &#34;kai&#34;, } -- 给 my_table 增减 元表 setmetatable(my_table, my_parent_metatable) -- 获取 元表 local parent = getmetatable(my_table) -- 打印元表信息 print(parent.name) print(parent.nick) print(parent." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/" />
+
+<title>Metatable | Lua</title>
+<link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Lua/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Lua"><span>Lua</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Lua/docs/Quick-Start/Quick-Start/">快速开始</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Syntax/">语法结构</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Function/">string</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Metatable/"class=active>Metatable 元表</a></li>
+<li><strong>Action</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Action/LuaCheck/">LuaCheck 静态检查</a></li>
+<li>
+  <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
+<li>
+  <a href="/Lua/docs/Action/Exception/">异常处理 (pcall/xpcall)</a></li>
+</ul>
+</li>
+<li><strong>Module</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/Module/Time/">时间相关</a></li>
+<li>
+  <a href="/Lua/docs/Module/IO/">I/O 模块</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaSocket/">LuaSocket 网络工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaFileSystem/">LuaFileSystem 文件工具</a></li>
+<li>
+  <a href="/Lua/docs/Module/LuaCJSON/">LuaCJSON json 格式处理</a></li>
+</ul>
+</li>
+<li><strong>LuaRocks</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaRocks/LuaRocks-Install/">LuaRocks 安装</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Command/">常用命令</a></li>
+<li>
+  <a href="/Lua/docs/LuaRocks/Creating-Rock/">创建一个 Rock</a></li>
+</ul>
+</li>
+<li><strong>LuaJIT</strong>
+<ul>
+<li>
+  <a href="/Lua/docs/LuaJIT/Quick-Start/">快速开始</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Lua/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Metatable</strong>
+
+  <label for="toc-control">
+    <img src="/Lua/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#metatable">Metatable</a>
+      <ul>
+        <li><a href="#元表示例">元表示例</a></li>
+        <li><a href="#元方法">元方法</a>
+          <ul>
+            <li><a href="#__index--继承">__index  继承</a></li>
+            <li><a href="#__newindex-拦截-set">__newindex 拦截 set</a></li>
+            <li><a href="#重写操作符">重写操作符</a></li>
+            <li><a href="#__calltable-调用">__call，table() 调用</a></li>
+            <li><a href="#__tostring">__tostring</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="metatable">Metatable</h1>
+<ul>
+<li>Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。</li>
+<li>元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法</li>
+<li>setmetatable 时 metatable 中不能存在 <code>__metatable</code> 键</li>
+</ul>
+<h2 id="元表示例">元表示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- metatable</span>
+<span style="color:#66d9ef">local</span> my_parent_metatable <span style="color:#f92672">=</span> {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;new&#34;</span>,
+    nick <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kailbin&#34;</span>,
+    getAge <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">28</span>
+    <span style="color:#66d9ef">end</span>
+}
+
+<span style="color:#75715e">-- 原始 table</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span>,
+}
+
+<span style="color:#75715e">-- 给 my_table 增减 元表</span>
+setmetatable(my_table, my_parent_metatable)
+
+<span style="color:#75715e">-- 获取 元表</span>
+<span style="color:#66d9ef">local</span> parent <span style="color:#f92672">=</span> getmetatable(my_table)
+<span style="color:#75715e">-- 打印元表信息</span>
+print(parent.name)
+print(parent.nick)
+print(parent.getAge())
+
+<span style="color:#75715e">-- 获取 my_table</span>
+print(my_table.name)
+<span style="color:#75715e">--print(my_table.nick)      -- 这里会报错，my_table 和 my_parent_metatable 目前没有继承关系</span>
+<span style="color:#75715e">--print(my_table.getAge())  -- 这里会报错，</span>
+
+<span style="color:#75715e">-- name	kai</span>
+<span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(my_table) <span style="color:#66d9ef">do</span>
+    print(k, v)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><ul>
+<li>metatable 元表是  table 的隐藏属性</li>
+<li>通过 <code>setmetatable</code> / <code>getmetatable</code> 设置和获取 元表</li>
+<li>如果想通过 元表 实现继承的效果，需要用到 <code>__index</code> 原方法</li>
+</ul>
+<h2 id="元方法">元方法</h2>
+<h3 id="__index--继承">__index  继承</h3>
+<ul>
+<li>通过 Key 访问 table 时，如果这个 Key 没有值，会寻找该 <code>table</code> 的 <code>metatable</code> 中的 <code>__index</code> 键</li>
+<li>❤ 如果 <code>__index</code> 是一个 <code>table</code> ，Lua 会在 table 中查找相应的键</li>
+<li>❤  如果 <code>__index</code> 是一个 <code>function</code> ，Lua 会调用那个 <code>function</code> ，<strong>并把 table 和 Key 作为参数传入</strong></li>
+</ul>
+<h4 id="__index--table-设置父类">__index = table 设置父类</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- metatable</span>
+<span style="color:#66d9ef">local</span> my_parent_metatable <span style="color:#f92672">=</span> {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;new&#34;</span>,
+    nick <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kailbin&#34;</span>,
+    getAge <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">28</span>
+    <span style="color:#66d9ef">end</span>
+}
+
+<span style="color:#75715e">-- 原始 table</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span>,
+}
+
+<span style="color:#75715e">-- 指定 元表 包含 __index， 类似于设置 父类</span>
+setmetatable(my_table, { __index <span style="color:#f92672">=</span> my_parent_metatable })
+
+print(my_table.name)     <span style="color:#75715e">-- kai</span>
+print(my_table.nick)     <span style="color:#75715e">-- kailbin</span>
+print(my_table.getAge()) <span style="color:#75715e">-- 28</span>
+</code></pre></div><h4 id="__index--function">__index = function</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- metatable function</span>
+<span style="color:#66d9ef">local</span> my_invoker <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(target, methodKey)
+    <span style="color:#66d9ef">if</span> methodKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;getAge&#34;</span> <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">28</span>
+    <span style="color:#66d9ef">else</span>
+        <span style="color:#66d9ef">return</span> methodKey
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 原始 table</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span>,
+}
+
+<span style="color:#75715e">-- 指定 元表 包含 __index， 类型 function</span>
+setmetatable(my_table, { __index <span style="color:#f92672">=</span> my_invoker })
+
+print(my_table.name)     <span style="color:#75715e">-- kai</span>
+print(my_table.getAge)   <span style="color:#75715e">-- 28</span>
+print(my_table.getAge1)  <span style="color:#75715e">-- getAge1 (未实现，返回 key 本身)</span>
+print(my_table.getAge()) <span style="color:#75715e">-- 这里报错，不支持 function</span>
+</code></pre></div><h3 id="__newindex-拦截-set">__newindex 拦截 set</h3>
+<ul>
+<li><code>__index</code> 用来对表访问， <code>__newindex</code> 则用来对表更新</li>
+<li>给 table 的 不存在的 Key 赋值，就会查找 <code>__newindex</code> 元方法</li>
+<li>❤ 如果 <code>__newindex</code> 是一个 <code>table</code> ，Lua 会对 table 赋值</li>
+<li>❤  如果 <code>__newindex</code> 是一个 <code>function</code> ，Lua 会调用那个 <code>function</code> ，<strong>并把 table 、Key、Value 作为参数传入</strong></li>
+</ul>
+<h4 id="__newindex--table">__newindex = table</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span> }
+<span style="color:#66d9ef">local</span> new_table <span style="color:#f92672">=</span> {}
+setmetatable(my_table, { __newindex <span style="color:#f92672">=</span> new_table })
+
+my_table.nick <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kailbin&#34;</span>
+print(my_table.nick, new_table.nick) <span style="color:#75715e">-- nil	kailbin （虽然给 my_table 赋值，但是通过 my_table 获取不到）</span>
+
+my_table.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Kail&#34;</span>
+print(my_table.name, new_table.name) <span style="color:#75715e">-- Kail	nil （name 本身存在，可以正常赋值）</span>
+</code></pre></div><h4 id="__newindex--function">__newindex = function</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">my_table <span style="color:#f92672">=</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span> }
+meta_filter_table <span style="color:#f92672">=</span> {
+  __newindex <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(my_tab, key, value)
+    <span style="color:#75715e">-- my_tab[key] = value .. &#34;!&#34;</span>
+    <span style="color:#75715e">-- 【注意】这里只能使用 rawset 方式，上面的方式会 stack overflow</span>
+    rawset(my_table, key, value <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;!&#34;</span>)
+  <span style="color:#66d9ef">end</span>
+}
+<span style="color:#75715e">-- </span>
+setmetatable(my_table, meta_filter_table)
+
+my_table.nick <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kailbin&#34;</span>
+print(my_table.nick)      <span style="color:#75715e">-- kailbin!</span>
+
+my_table.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Kail&#34;</span>
+print(my_table.name)      <span style="color:#75715e">-- Kail （已经存在的字段，不受 meta_filter_table 影响）</span>
+</code></pre></div><h3 id="重写操作符">重写操作符</h3>
+<h4 id="对应关系">对应关系</h4>
+<table>
+<thead>
+<tr>
+<th align="right">元方法</th>
+<th align="left">操作符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>__add</code></td>
+<td align="left"><code>+</code></td>
+</tr>
+<tr>
+<td align="right"><code>__sub</code></td>
+<td align="left"><code>-</code></td>
+</tr>
+<tr>
+<td align="right"><code>__mul</code></td>
+<td align="left"><code>*</code></td>
+</tr>
+<tr>
+<td align="right"><code>__div</code></td>
+<td align="left"><code>/</code></td>
+</tr>
+<tr>
+<td align="right"><code>__mod</code></td>
+<td align="left"><code>%</code></td>
+</tr>
+<tr>
+<td align="right"><code>__unm</code></td>
+<td align="left"><code>-</code></td>
+</tr>
+<tr>
+<td align="right"><code>__concat</code></td>
+<td align="left"><code>..</code></td>
+</tr>
+<tr>
+<td align="right"><code>__eq</code></td>
+<td align="left"><code>==</code></td>
+</tr>
+<tr>
+<td align="right"><code>__lt</code></td>
+<td align="left"><code>&lt;</code></td>
+</tr>
+<tr>
+<td align="right"><code>__le</code></td>
+<td align="left"><code>&lt;=</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="两表拼接">两表拼接</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- 拼接函数</span>
+<span style="color:#66d9ef">local</span> concat_func <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(my_tab, new_tab)
+    <span style="color:#66d9ef">for</span> i, v <span style="color:#66d9ef">in</span> pairs(new_tab) <span style="color:#66d9ef">do</span>
+        my_tab[<span style="color:#f92672">#</span>my_tab <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> v
+    <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">return</span> my_tab
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- 原始表</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span> }
+<span style="color:#75715e">-- 增加元表，重新 `..` 操作符</span>
+setmetatable(my_table, { __concat <span style="color:#f92672">=</span> concat_func })
+<span style="color:#75715e">-- </span>
+<span style="color:#66d9ef">local</span> second_table <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span> }
+
+<span style="color:#75715e">-- 两表拼接</span>
+my_table <span style="color:#f92672">=</span> my_table <span style="color:#f92672">..</span> second_table
+
+<span style="color:#75715e">-- 打印：1,2,3,a,b,c</span>
+print(table.concat(my_table, <span style="color:#e6db74">&#34;,&#34;</span>))
+</code></pre></div><h3 id="__calltable-调用">__call，table() 调用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- metatable</span>
+<span style="color:#66d9ef">local</span> def_init <span style="color:#f92672">=</span> {
+    __call <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(my_table, new_table)
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> new_table <span style="color:#66d9ef">then</span>
+            <span style="color:#66d9ef">return</span> my_table
+        <span style="color:#66d9ef">end</span>
+        my_table.name <span style="color:#f92672">=</span> new_table.name
+        <span style="color:#66d9ef">return</span> my_table;
+    <span style="color:#66d9ef">end</span>
+}
+
+<span style="color:#75715e">-- 原始 table</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span> }
+<span style="color:#75715e">--</span>
+setmetatable(my_table, def_init)
+
+<span style="color:#75715e">-- </span>
+<span style="color:#66d9ef">local</span> t1 <span style="color:#f92672">=</span> my_table()
+print(t1.name) <span style="color:#75715e">-- 输出 kai</span>
+
+<span style="color:#66d9ef">local</span> t2 <span style="color:#f92672">=</span> my_table({ name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kkk&#34;</span> })
+print(t1.name) <span style="color:#75715e">-- 输出 kkk</span>
+print(t2.name) <span style="color:#75715e">-- 输出 kkk</span>
+</code></pre></div><h3 id="__tostring">__tostring</h3>
+<ul>
+<li>修改表的输出行为</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#66d9ef">local</span> meta_tostring <span style="color:#f92672">=</span> {
+    __tostring <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(my_table)
+        <span style="color:#66d9ef">local</span> tostring <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{&#34;</span>
+        <span style="color:#66d9ef">for</span> k, v <span style="color:#66d9ef">in</span> pairs(my_table) <span style="color:#66d9ef">do</span>
+            tostring <span style="color:#f92672">=</span> tostring <span style="color:#f92672">..</span> k <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">..</span> v <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;, &#34;</span>
+        <span style="color:#66d9ef">end</span>
+        <span style="color:#66d9ef">return</span> tostring <span style="color:#f92672">..</span> <span style="color:#e6db74">&#34;}&#34;</span>;
+    <span style="color:#66d9ef">end</span>
+}
+
+<span style="color:#75715e">-- 原始 table</span>
+<span style="color:#66d9ef">local</span> my_table <span style="color:#f92672">=</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span>, nick <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kailbin&#34;</span> }
+
+print(my_table) <span style="color:#75715e">-- table: 0x7fe1b9d04430</span>
+
+<span style="color:#75715e">-- 重新输出方式</span>
+setmetatable(my_table, meta_tostring)
+
+print(my_table) <span style="color:#75715e">-- {name=kai, nick=kailbin, }</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://www.runoob.com/lua/lua-metatables.html">Lua 元表(Metatable)</a></li>
+<li></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-setmetatable">setmetatable (table, metatable)</a></li>
+<li>
+  <a href="https://www.runoob.com/manual/lua53doc/manual.html#pdf-getmetatable">getmetatable (object)</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/edit/master/HuGo/content/docs/Quick-Start/Metatable.md" target="_blank" rel="noopener">
+      <img src="/Lua/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#metatable">Metatable</a>
+      <ul>
+        <li><a href="#元表示例">元表示例</a></li>
+        <li><a href="#元方法">元方法</a>
+          <ul>
+            <li><a href="#__index--继承">__index  继承</a></li>
+            <li><a href="#__newindex-拦截-set">__newindex 拦截 set</a></li>
+            <li><a href="#重写操作符">重写操作符</a></li>
+            <li><a href="#__calltable-调用">__call，table() 调用</a></li>
+            <li><a href="#__tostring">__tostring</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

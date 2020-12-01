@@ -129,6 +129,15 @@ function fun(a, b) error(&amp;#34;错误原因&amp;#34;, 2) end fun(1, 2) 异常
     
     <item>
       <title></title>
+      <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Lua/docs/Quick-Start/Metatable/</guid>
+      <description>Metatable  Lua table 中我们可以 通过 Key 访问到对应的 Value，但是却无法对两个 table 进行操作。 元表(Metatable)，允许我们改变 table 的行为，每个行为关联了对应的元方法 setmetatable 时 metatable 中不能存在 __metatable 键  元表示例 -- metatable local my_parent_metatable = { name = &amp;#34;new&amp;#34;, nick = &amp;#34;kailbin&amp;#34;, getAge = function() return 28 end } -- 原始 table local my_table = { name = &amp;#34;kai&amp;#34;, } -- 给 my_table 增减 元表 setmetatable(my_table, my_parent_metatable) -- 获取 元表 local parent = getmetatable(my_table) -- 打印元表信息 print(parent.name) print(parent.nick) print(parent.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

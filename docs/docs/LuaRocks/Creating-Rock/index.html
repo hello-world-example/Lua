@@ -8,7 +8,7 @@
 <meta property="og:description" content="创建一个 Rock 初始化 rock $ mkdir rock-hello $ cd rock-hello # 创建 rockspec 文件模板 $ luarocks write_rockspec # 成功后会在当前文件夹下生成 rock-hello-dev-1.rockspec 文件 $ cat rock-hello-dev-1.rockspec *.rockspec 文件    Rockspec format 详细文件格式   -- {package}-{version}.rockspec 与文件名保持一致 package = &#34;rock-hello&#34; -- ❤❤❤ 版本号要以 -x 结尾，如0.0.1-1，1.3-1，如果你不按照这种规则定义则会报错！ version = &#34;dev-1&#34; -- ❤❤❤ luarocks 仓库托管的只有 *.rockspec 这个文件 -- ❤❤❤ source 需要执行可以下载的地址 source = { -- 源码位置，如： github 地址 url = &#34;*** please add URL for source tarball, zip or repository here ***&#34; } description = { -- 项目文档地址，如 github 的 page homepage = &#34;*** please enter a project homepage ***&#34;, summary = &#34;简介&#34;, detailed = [[ 详细描述 ]], -- 开源协议，如： MIT license = &#34;*** please specify a license ***&#34; } dependencies = { &#34;lua &gt;= 5." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/LuaRocks/Creating-Rock/" />
-
+<meta property="article:modified_time" content="2020-11-27T15:58:46+08:00" />
 <title>Creating Rock | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -57,6 +57,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
 <li>
   <a href="/Lua/docs/Quick-Start/Module/">Module</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Metatable/">Metatable 元表</a></li>
 <li><strong>Action</strong>
 <ul>
 <li>
@@ -64,7 +66,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
 <li>
-  <a href="/Lua/docs/Action/Exception/">异常处理</a></li>
+  <a href="/Lua/docs/Action/Exception/">异常处理 (pcall/xpcall)</a></li>
 </ul>
 </li>
 <li><strong>Module</strong>
@@ -299,6 +301,14 @@ $ sudo luarocks install rock-hello
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/bb9a52b3ecb563c34dea05b78c21be6597785b44" title='Last modified by kaibin.yang | Nov 27, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Nov 27, 2020</span>
+    </a>
+  </div>
 
 
 

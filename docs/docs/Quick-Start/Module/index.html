@@ -8,7 +8,7 @@
 <meta property="og:description" content="模块 module.lua -- 定义一个名为 module 的模块 module = {} -- 定义一个常量 module.constant = &#34;这是一个常量&#34; -- 定义一个函数 function module.func1() io.write(&#34;这是一个公有函数！\n&#34;) end local function func2() print(&#34;这是一个私有函数！&#34;) end function module.func3() func2() end return module test_module.lua -- 默认扫描路径 print(package.path) -- 修改默认操作路径 package.path = package.path .. &#34;;/Users/kail/IdeaProjects/github/hello-world-example/Lua/src/main/lua/module/?.lua&#34; -- print(package.path) -- 加载模块 local module = require(&#34;module&#34;) -- 使用模块 print(module.constant) module.func3() 加载机制  在启动时，Lua 用环境变量 LUA_PATH 来初始化 package.path ，环境变脸用 ; 分割 默认扫描路径  package.path  /usr/local/share/lua/5.3/?.lua; /usr/local/share/lua/5.3/?/init.lua; /usr/local/lib/lua/5." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Lua/docs/Quick-Start/Module/" />
-
+<meta property="article:modified_time" content="2020-11-27T15:58:46+08:00" />
 <title>Module | Lua</title>
 <link rel="icon" href="/Lua/favicon.png" type="image/x-icon">
 
@@ -57,6 +57,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="/Lua/docs/Quick-Start/String-Regex/">正则匹配</a></li>
 <li>
   <a href="/Lua/docs/Quick-Start/Module/"class=active>Module</a></li>
+<li>
+  <a href="/Lua/docs/Quick-Start/Metatable/">Metatable 元表</a></li>
 <li><strong>Action</strong>
 <ul>
 <li>
@@ -64,7 +66,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/Lua/docs/Action/Chinese/">中文处理</a></li>
 <li>
-  <a href="/Lua/docs/Action/Exception/">异常处理</a></li>
+  <a href="/Lua/docs/Action/Exception/">异常处理 (pcall/xpcall)</a></li>
 </ul>
 </li>
 <li><strong>Module</strong>
@@ -241,6 +243,14 @@ module.func3()
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Lua/commit/bb9a52b3ecb563c34dea05b78c21be6597785b44" title='Last modified by kaibin.yang | Nov 27, 2020' target="_blank" rel="noopener">
+      <img src="/Lua/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Nov 27, 2020</span>
+    </a>
+  </div>
 
 
 

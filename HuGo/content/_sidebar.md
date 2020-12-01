@@ -7,10 +7,11 @@ headless: true
 - [string]({{< relref "/docs/Quick-Start/String-Function.md" >}})
 - [正则匹配]({{< relref "/docs/Quick-Start/String-Regex.md" >}})
 - [Module]({{< relref "/docs/Quick-Start/Module.md" >}})
+- [Metatable 元表]({{< relref "/docs/Quick-Start/Metatable.md" >}})
 - **Action**
   - [LuaCheck 静态检查]({{< relref "/docs/Action/LuaCheck.md" >}})
   - [中文处理]({{< relref "/docs/Action/Chinese.md" >}})
-  - [异常处理]({{< relref "/docs/Action/Exception.md" >}})
+  - [异常处理 (pcall/xpcall)]({{< relref "/docs/Action/Exception.md" >}})
 - **Module**
   - [时间相关]({{< relref "/docs/Module/Time.md" >}})
   - [I/O 模块]({{< relref "/docs/Module/IO.md" >}})
